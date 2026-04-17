@@ -1,0 +1,57 @@
+name: Deploy to box.co.il
+
+# Run on every push to main, and allow manual runs from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out the repo
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Install Node and cache npm deps
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # 3. Install exact versions from package-lock.json
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build the static site into out/
+      #    Public env vars (webhook URLs) are injected from repo secrets so
+      #    they end up inside the built JS bundle.
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL }}
+          
+      # 5. Upload out/ to the server via FTP
+      #    `dangerous-clean-slate: false` means files on the server that aren't
+      #    in out/ are left alone (safer). Flip to true if you want a mirror.
+      - name: Deploy to box.co.il via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./out/
+          server-dir: /public_html/
+          dangerous-clean-slate: false
+          # Don't touch the .htaccess that's already on the server — it has
+          # the absolute path to .htpasswd hardcoded for this specific server,
+          # and we don't want GitHub to overwrite it with the local template.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .htaccess

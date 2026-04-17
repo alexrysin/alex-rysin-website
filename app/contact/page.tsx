@@ -178,7 +178,11 @@ export default function ContactPage() {
                     </div>
 
                     {formState === "error" && (
-                      <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                      <div
+                        role="alert"
+                        aria-live="assertive"
+                        className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"
+                      >
                         אירעה שגיאה בשליחה. אנא נסו שוב או צרו קשר ישיר בוואטסאפ.
                       </div>
                     )}
@@ -220,7 +224,7 @@ export default function ContactPage() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/972501234567"
+                  href="https://wa.me/972544580159"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-green-50 hover:bg-green-100 rounded-xl transition-colors group mb-4"

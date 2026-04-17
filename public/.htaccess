@@ -1,0 +1,65 @@
+# ============================================================================
+# .htaccess — pre-launch configuration for box.co.il (Apache shared hosting).
+#
+# This file is copied verbatim into `out/` by Next.js static export because it
+# lives in `public/`. It does three things:
+#   1. Password-protects the entire site (HTTP Basic Auth).
+#   2. Tells search engines not to index anything (X-Robots-Tag).
+#   3. Handles Next.js-style clean URLs (falls back to index.html).
+#
+# When going live, comment out or remove the AuthType block to open the site,
+# and change the X-Robots-Tag to "all" (or remove the block entirely).
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 1. Password protection (HTTP Basic Auth)
+# ----------------------------------------------------------------------------
+# IMPORTANT: the AuthUserFile path below is a placeholder. You must edit it
+# once after uploading to match the real absolute path on the box.co.il
+# server — e.g. /home/yourcpaneluser/.htpasswds/alex-rysin/passwd
+# See the deploy guide in the chat for how to find this path.
+
+AuthType Basic
+AuthName "Alex Rysin — pre-launch (enter password)"
+AuthUserFile "/REPLACE/WITH/ABSOLUTE/PATH/TO/.htpasswd"
+Require valid-user
+
+# ----------------------------------------------------------------------------
+# 2. Tell search engines to stay out
+# ----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 3. Clean URLs — serve index.html from directories and handle 404
+# ----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If a request is for an existing file or directory, serve it as-is.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, try adding .html (e.g. /about -> /about.html if it exists)
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  # Fallback: Next's 404 page
+  ErrorDocument 404 /404.html
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 4. Cache static assets aggressively (optional, speeds up returning visits)
+# ----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

@@ -1,5 +1,10 @@
 node_modules
 .next
+out
+tsconfig.tsbuildinfo
 .env
 .env.local
 .env*.local
+
+# Facebook export — private data, never commit
+your_posts__check_ins__photos_and_videos_*.html

@@ -6,6 +6,7 @@ const navLinks = [
   { label: "בלוג", href: "/blog" },
   { label: "המלצות", href: "/testimonials" },
   { label: "צור קשר", href: "/contact" },
+  { label: "כלים", href: "/tools" },
 ];
 
 export default function Footer() {
@@ -85,19 +86,17 @@ export default function Footer() {
               </div>
             </div>
 
-            <Link
-              href="/contact"
-              className="mt-3 inline-block bg-[#6B8E23] hover:bg-[#5a781e] text-white font-bold px-5 py-2.5 rounded-lg transition-colors text-sm text-center"
-            >
-              קבע שיחת היכרות
-            </Link>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-[#2a4a9e] flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-blue-300">
           <p>© 2025 אלכס ריסין. כל הזכויות שמורות.</p>
-          <p>תכנון פיננסי | ייעוץ פנסיוני | עצמאות כלכלית</p>
+          <div className="flex items-center gap-4">
+            <Link href="/accessibility" className="hover:text-white transition-colors underline underline-offset-2">
+              הצהרת נגישות
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
