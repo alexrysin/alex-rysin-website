@@ -24,43 +24,43 @@ const stagger = (i: number) => ({
 const steps = [
   {
     title: "מבינים את התמונה המלאה",
-    desc: "שיחה ממוקדת שבה מבינים מה באמת חשוב לכם — ואיפה נוצר הפער מול מה שקורה היום.",
+    desc: "שיחה ממוקדת שבה מבינים מה באמת חשוב לכם - ואיפה נוצר הפער מול מה שקורה היום.",
   },
   {
     title: "בונים כיוון ברור שמתאים לכם",
-    desc: "אסטרטגיה ברורה שמחברת את כל ההחלטות למסלול אחד — כזה שתוכלו להבין ולהתקדם לפיו.",
+    desc: "אסטרטגיה ברורה שמחברת את כל ההחלטות למסלול אחד - כזה שתוכלו להבין ולהתקדם לפיו.",
   },
   {
-    title: "יוצאים לדרך — עם כלים וביטחון",
-    desc: "מגדירים צעדים ברורים — כך שתוכלו לקבל החלטות לבד. ואני זמין בנקודות החשובות, כשצריך לקבל החלטה משמעותית.",
+    title: "יוצאים לדרך - עם כלים וביטחון",
+    desc: "מגדירים צעדים ברורים - כך שתוכלו לקבל החלטות לבד. ואני זמין בנקודות החשובות, כשצריך לקבל החלטה משמעותית.",
   },
 ];
 
 // ---- Why Alex items ----
 const whyItems = [
-  'לא עוד "במה להשקיע" — אלא איך לחשוב נכון על הכסף שלכם',
+  'לא עוד "במה להשקיע" - אלא איך לחשוב נכון על הכסף שלכם',
   "תהליך קצר שמייצר עצמאות, לא תלות",
   "חיבור בין כל ההחלטות לתמונה אחת ברורה",
-  "זמינות בנקודות קריטיות — כדי שלא תישארו לבד בהחלטות חשובות",
+  "זמינות בנקודות קריטיות - כדי שלא תישארו לבד בהחלטות חשובות",
 ];
 
 // ---- Testimonials ----
 const testimonials = [
   {
     quote:
-      "הבנו שלא נתקדם כלכלית בלי שינוי. אלכס בנה כמה תרחישים על השקעות שלא הכרנו קודם, נתן לנו זמן לקחת את ההחלטה בעצמנו — ואחרי תשעה חודשים הגענו לפורטפוליו מלא של השקעות.",
+      "הבנו שלא נתקדם כלכלית בלי שינוי. אלכס בנה כמה תרחישים על השקעות שלא הכרנו קודם, נתן לנו זמן לקחת את ההחלטה בעצמנו - ואחרי תשעה חודשים הגענו לפורטפוליו מלא של השקעות.",
     author: "מיה ורועי",
     role: "זוג + 2 ילדים",
   },
   {
     quote:
-      "התהליך עם אלכס היה מדויק עבורינו. לאורך הדרך קיבלנו המון כלים מעשיים, תמיכה ועזרה — גם אם לפעמים הייתה בעיקר נפשית ובכלל לא כלכלית.",
+      "התהליך עם אלכס היה מדויק עבורינו. לאורך הדרך קיבלנו המון כלים מעשיים, תמיכה ועזרה - גם אם לפעמים הייתה בעיקר נפשית ובכלל לא כלכלית.",
     author: "עדי ובן",
     role: "זוג + 2 ילדים",
   },
   {
     quote:
-      "אחרי אכזבה מתהליך קודם — הפעם אנחנו חווים חוויה מתקנת. היה לנו ברור שאנחנו זקוקים לאיש מקצוע שיעשה לנו סדר ויכין תוכנית סדורה. אלכס בנה לנו תוכנית ואנחנו פועלים לפיה.",
+      "אחרי אכזבה מתהליך קודם - הפעם אנחנו חווים חוויה מתקנת. היה לנו ברור שאנחנו זקוקים לאיש מקצוע שיעשה לנו סדר ויכין תוכנית סדורה. אלכס בנה לנו תוכנית ואנחנו פועלים לפיה.",
     author: "עינת",
     role: "זוג + 4 ילדים",
   },
@@ -93,7 +93,7 @@ export default function HomePage() {
       ================================================ */}
       <section className="relative bg-[#1C3879] overflow-hidden min-h-[90vh] flex items-stretch">
 
-        {/* Text side — RTL: appears on the RIGHT (65%) */}
+        {/* Text side - RTL: appears on the RIGHT (65%) */}
         <div className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-right justify-center px-8 sm:px-12 lg:px-24 xl:px-32 py-28 w-full lg:w-[65%]">
 
           {/* Headline */}
@@ -115,7 +115,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-lg md:text-xl text-blue-100/70 leading-relaxed mb-5 max-w-xl"
           >
-            תהליך תכנון פיננסי שמחבר את כל ההחלטות לתמונה אחת ברורה — ועוזר לכם לקבל החלטות טובות יותר, עם הכסף שכבר יש.
+            תהליך תכנון פיננסי שמחבר את כל ההחלטות לתמונה אחת ברורה - ועוזר לכם לקבל החלטות טובות יותר, עם הכסף שכבר יש.
           </motion.p>
 
           {/* Mobile photo */}
@@ -127,7 +127,7 @@ export default function HomePage() {
           >
             <img
               src="/assets/squeeze.jpg"
-              alt="אלכס ריסין — יועץ פיננסי"
+              alt="אלכס ריסין - יועץ פיננסי"
               className="w-[200px] h-[200px] object-cover rounded-2xl shadow-xl"
             />
           </motion.div>
@@ -148,7 +148,7 @@ export default function HomePage() {
 
         </div>
 
-        {/* Photo side — RTL: appears on the LEFT (desktop only) */}
+        {/* Photo side - RTL: appears on the LEFT (desktop only) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -157,7 +157,7 @@ export default function HomePage() {
         >
           <img
             src="/assets/squeeze.jpg"
-            alt="אלכס ריסין — יועץ פיננסי"
+            alt="אלכס ריסין - יועץ פיננסי"
             className="w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl"
           />
         </motion.div>
@@ -191,16 +191,16 @@ export default function HomePage() {
             {...fadeUp}
             className="text-base md:text-lg text-[#6B7280] leading-relaxed mb-8 max-w-[650px]"
           >
-            וכשזה המצב — קל להרגיש שאתם עושים את הדבר הנכון, בלי לדעת אם זה באמת מקדם אתכם.
+            וכשזה המצב - קל להרגיש שאתם עושים את הדבר הנכון, בלי לדעת אם זה באמת מקדם אתכם.
           </motion.p>
 
           {/* Bullet list */}
           <div className="flex flex-col gap-[16px]">
             {[
-              "אתם עושים מהלכים — אבל לא בטוחים אם זו הדרך הנכונה",
-              "משלבים בין השקעות, נדל״ן וחסכונות — בלי תמונה אחת שמחברת הכול",
-              "מרגישים שיש פוטנציאל ליותר — אבל אין דרך ברורה להגיע לשם",
-              "מקבלים החלטות חשובות — בלי להבין איך הן משפיעות על התמונה הגדולה",
+              "אתם עושים מהלכים - אבל לא בטוחים אם זו הדרך הנכונה",
+              "משלבים בין השקעות, נדל״ן וחסכונות - בלי תמונה אחת שמחברת הכול",
+              "מרגישים שיש פוטנציאל ליותר - אבל אין דרך ברורה להגיע לשם",
+              "מקבלים החלטות חשובות - בלי להבין איך הן משפיעות על התמונה הגדולה",
             ].map((item, i) => (
               <motion.p
                 key={i}
@@ -210,7 +210,7 @@ export default function HomePage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="text-gray-800 text-base md:text-[1.1rem] leading-[1.7]"
               >
-                <span className="text-[#1C3879] ml-2">—</span>
+                <span className="text-[#1C3879] ml-2">-</span>
                 {item}
               </motion.p>
             ))}
@@ -222,7 +222,7 @@ export default function HomePage() {
               href="/contact"
               className="inline-flex items-center gap-2 bg-[#1C3879] hover:bg-[#142b5c] text-white font-bold px-10 py-[18px] rounded-xl transition-colors duration-300 text-lg"
             >
-              בואו נעשה סדר — ונראה איך זה נראה אצלכם
+              בואו נעשה סדר - ונראה איך זה נראה אצלכם
             </Link>
             <motion.p
               initial={{ opacity: 0 }}
@@ -231,7 +231,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-sm text-[#6B7280] mt-5"
             >
-              או —{" "}
+              או -{" "}
               <Link
                 href="/tools/potential"
                 className="text-[#1C3879] font-semibold underline underline-offset-4 decoration-[#5AC8C8] decoration-2 hover:decoration-[#1C3879] transition-colors"
@@ -255,7 +255,7 @@ export default function HomePage() {
               כך נראה תהליך שמייצר <span className="font-bold">כיוון ברור</span> לכסף שלכם
             </h2>
             <p className="text-[#6B7280] text-base md:text-lg max-w-[650px] mx-auto leading-relaxed">
-              תהליך קצר וממוקד שמייצר כיוון ברור — ולא עוד רשימת המלצות שלא מתחברות אחת לשנייה.
+              תהליך קצר וממוקד שמייצר כיוון ברור - ולא עוד רשימת המלצות שלא מתחברות אחת לשנייה.
             </p>
           </motion.div>
 
@@ -283,7 +283,7 @@ export default function HomePage() {
           {/* Summary + CTA */}
           <motion.div {...fadeUp} className="text-center mt-16">
             <p className="text-[#6B7280] text-lg mb-10 max-w-2xl mx-auto">
-              בסוף התהליך — יש לכם תמונה ברורה, ותוכנית שאפשר להתחיל לפעול לפיה מיד.
+              בסוף התהליך - יש לכם תמונה ברורה, ותוכנית שאפשר להתחיל לפעול לפיה מיד.
             </p>
             <Link
               href="/contact"
@@ -309,7 +309,7 @@ export default function HomePage() {
                 דרך אחרת לנהל את הכסף שלכם.
               </h2>
               <p className="text-lg md:text-xl text-[#6B7280] leading-relaxed mb-10 max-w-[600px]">
-                אני לא מנהל לכם את הכסף — אני עוזר לכם לקבל החלטות נכונות.
+                אני לא מנהל לכם את הכסף - אני עוזר לכם לקבל החלטות נכונות.
               </p>
               <div className="flex flex-col gap-5 mb-12">
                 {whyItems.map((item, i) => (
@@ -352,7 +352,7 @@ export default function HomePage() {
                 </span>
 
                 <p className="relative text-blue-100 text-[19px] leading-[1.7] mb-4">
-                  המטרה שלי היא לא לנהל לכם את הכסף — אלא שתדעו לנהל את ההחלטות שלכם.
+                  המטרה שלי היא לא לנהל לכם את הכסף - אלא שתדעו לנהל את ההחלטות שלכם.
                 </p>
                 <div className="relative inline-flex items-center gap-[10px] justify-start">
                   <img
@@ -433,7 +433,7 @@ export default function HomePage() {
               לפעמים שיחה אחת היא כל מה שצריך כדי להתחיל לזוז.
             </p>
             <p className="text-base text-gray-400 mb-8">
-              שיחה קצרה, בלי התחייבות — כדי להבין אם זה מתאים לכם.
+              שיחה קצרה, בלי התחייבות - כדי להבין אם זה מתאים לכם.
             </p>
             <Link
               href="/contact"

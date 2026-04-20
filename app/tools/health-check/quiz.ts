@@ -1,9 +1,9 @@
 // ============================================================================
-// Financial Health Check — Quiz data, scoring logic, and recommendations
+// Financial Health Check - Quiz data, scoring logic, and recommendations
 // ============================================================================
 // 5 categories × 3 questions = 15 questions.
 // Each answer: "yes" = 2, "kind_of" = 1, "no" = 0.
-// Category score: 0–6. Overall: 0–30, normalized to 0–100 for display.
+// Category score: 0-6. Overall: 0-30, normalized to 0-100 for display.
 // ============================================================================
 
 export type Answer = "yes" | "kind_of" | "no";
@@ -41,7 +41,7 @@ export interface Question {
   text: string;
   /**
    * When true, a "yes" answer means LOW score (the question is phrased
-   * such that "yes" is the problem — e.g. "do you have consumer debt?").
+   * such that "yes" is the problem - e.g. "do you have consumer debt?").
    */
   inverted?: boolean;
 }
@@ -138,16 +138,16 @@ export interface CategoryScore {
   id: CategoryId;
   title: string;
   icon: string;
-  /** 0–6 */
+  /** 0-6 */
   raw: number;
-  /** 0–100 */
+  /** 0-100 */
   percent: number;
 }
 
 export interface QuizResult {
-  /** Raw total 0–30 */
+  /** Raw total 0-30 */
   totalRaw: number;
-  /** 0–100 */
+  /** 0-100 */
   totalPercent: number;
   tier: Tier;
   categories: CategoryScore[];
@@ -241,16 +241,16 @@ export function computeResult(answers: Record<string, Answer>): QuizResult {
 }
 
 // ---------------------------------------------------------------------------
-// Recommendations — shown for categories with raw score ≤ 3 (out of 6)
+// Recommendations - shown for categories with raw score ≤ 3 (out of 6)
 // ---------------------------------------------------------------------------
 
 export const CATEGORY_RECOMMENDATIONS: Record<CategoryId, string> = {
   resilience:
-    "חוסן פיננסי הוא הבסיס של הכל. קרן חירום של 3–6 חודשי הוצאות וביטוחים נכונים הם ההגנה הראשונה מפני אירועים בלתי צפויים. בלעדיהם, כל תוכנית השקעה עלולה להתפרק בבוקר הלא נכון.",
+    "חוסן פיננסי הוא הבסיס של הכל. קרן חירום של 3-6 חודשי הוצאות וביטוחים נכונים הם ההגנה הראשונה מפני אירועים בלתי צפויים. בלעדיהם, כל תוכנית השקעה עלולה להתפרק בבוקר הלא נכון.",
   debt:
-    "חובות צרכניים עם ריבית גבוהה הם בור שחור שמוצץ כל תשואה פוטנציאלית. כדאי לבנות תוכנית החזר מסודרת — מי הריבית הגבוהה ביותר, כמה לשלם, ומתי תסיימו. לפני שמשקיעים, סגירת חובות צרכניים היא כמעט תמיד הצעד הכי רווחי.",
+    "חובות צרכניים עם ריבית גבוהה הם בור שחור שמוצץ כל תשואה פוטנציאלית. כדאי לבנות תוכנית החזר מסודרת - מי הריבית הגבוהה ביותר, כמה לשלם, ומתי תסיימו. לפני שמשקיעים, סגירת חובות צרכניים היא כמעט תמיד הצעד הכי רווחי.",
   savings:
-    "חיסכון קבוע והשקעה נכונה הם המנוע של הצמיחה הכלכלית. אם אתם חוסכים פחות מ-10% מההכנסה או משאירים את הכל בעו״ש/פיקדון, אתם מפספסים את המנוע הכי חזק שיש — ריבית דריבית. כדאי ללמוד את עקרונות ההשקעה הפאסיבית ולהתחיל בקטן.",
+    "חיסכון קבוע והשקעה נכונה הם המנוע של הצמיחה הכלכלית. אם אתם חוסכים פחות מ-10% מההכנסה או משאירים את הכל בעו״ש/פיקדון, אתם מפספסים את המנוע הכי חזק שיש - ריבית דריבית. כדאי ללמוד את עקרונות ההשקעה הפאסיבית ולהתחיל בקטן.",
   long_term:
     "בלי יעדים כתובים ובלי הבנה של מה מחכה לכם בפנסיה, קשה לדעת אם אתם בכיוון. הצעד הראשון הוא להיכנס לאתר הר הכסף ולאסוף את כל הקופות והקרנות שלכם, לבדוק את דמי הניהול, ולהגדיר על דף אחד איפה אתם רוצים להיות בעוד 5 ו-10 שנים.",
   awareness:

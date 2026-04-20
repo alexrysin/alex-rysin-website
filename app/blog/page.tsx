@@ -7,13 +7,13 @@ import { useMemo, useState } from "react";
 import { posts } from "@/content/posts";
 
 // ============================================================================
-// Blog index — curated essays by Alex Rysin on financial planning and
+// Blog index - curated essays by Alex Rysin on financial planning and
 // financial independence. Features one highlighted post plus a filterable grid.
 // ============================================================================
 
 const CATEGORY_ALL = "הכל";
 
-// Per-category accent gradients — echo the /tools page visual language.
+// Per-category accent gradients - echo the /tools page visual language.
 const categoryAccents: Record<string, { from: string; to: string; text: string }> = {
   'נדל"ן':        { from: "#1A365D", to: "#2a4a7a", text: "#5AC8C8" },
   "השקעות":       { from: "#5AC8C8", to: "#4ab8b8", text: "#ffffff" },
@@ -74,12 +74,12 @@ export default function BlogPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
           >
-            מאמרים מעשיים על תכנון פיננסי, נדל״ן, שוק ההון וחופש כלכלי — בלי עגה
+            מאמרים מעשיים על תכנון פיננסי, נדל״ן, שוק ההון וחופש כלכלי - בלי עגה
             מקצועית, בלי בלגן, עם דוגמאות מהחיים האמיתיים.
           </motion.p>
         </div>
 
-        {/* Featured post — larger card */}
+        {/* Featured post - larger card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,7 +168,7 @@ export default function BlogPage() {
 }
 
 // ----------------------------------------------------------------------------
-// Featured card — one large, visually prominent card at the top of the index.
+// Featured card - one large, visually prominent card at the top of the index.
 // ----------------------------------------------------------------------------
 
 function FeaturedCard({ post }: { post: (typeof posts)[number] }) {
@@ -179,7 +179,7 @@ function FeaturedCard({ post }: { post: (typeof posts)[number] }) {
       className="group block bg-white rounded-3xl shadow-[0_25px_70px_-25px_rgba(26,54,93,0.25)] border border-gray-100 overflow-hidden hover:shadow-[0_30px_80px_-20px_rgba(26,54,93,0.35)] hover:-translate-y-1 transition-all duration-300"
     >
       <div className="grid grid-cols-1 md:grid-cols-5">
-        {/* Visual side — uses post.image when provided, else a gradient panel. */}
+        {/* Visual side - uses post.image when provided, else a gradient panel. */}
         <div
           className="relative md:col-span-2 overflow-hidden min-h-[220px] md:min-h-[320px]"
           style={
@@ -252,7 +252,7 @@ function FeaturedCard({ post }: { post: (typeof posts)[number] }) {
 }
 
 // ----------------------------------------------------------------------------
-// Regular post card — used in the filterable grid below the featured post.
+// Regular post card - used in the filterable grid below the featured post.
 // ----------------------------------------------------------------------------
 
 function PostCard({ post }: { post: (typeof posts)[number] }) {
@@ -262,7 +262,7 @@ function PostCard({ post }: { post: (typeof posts)[number] }) {
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col bg-white rounded-3xl shadow-[0_20px_60px_-25px_rgba(26,54,93,0.2)] border border-gray-100 overflow-hidden hover:shadow-[0_25px_70px_-20px_rgba(26,54,93,0.3)] hover:-translate-y-1 transition-all duration-300"
     >
-      {/* Top visual — image with gradient overlay, or gradient-only if no image */}
+      {/* Top visual - image with gradient overlay, or gradient-only if no image */}
       <div
         className="relative overflow-hidden aspect-[16/9]"
         style={

@@ -1,5 +1,5 @@
 // ============================================================================
-// Financial Potential Calculator — Core Logic
+// Financial Potential Calculator - Core Logic
 // ============================================================================
 // All amounts are in today's shekels (real terms). Inflation is baked in
 // by using real returns, so the result is comparable to current purchasing
@@ -7,20 +7,20 @@
 // ============================================================================
 
 export const ASSUMPTIONS = {
-  /** Real annual return on investment portfolio (stocks, ETFs) — after inflation */
+  /** Real annual return on investment portfolio (stocks, ETFs) - after inflation */
   STOCK_RETURN: 0.08,
   /** Real annual appreciation of real estate value */
   RE_APPRECIATION: 0.04,
   /** Annual rental yield on investment property (before expenses) */
   RENT_YIELD: 0.03,
-  /** Annual inflation (documented but not directly used — everything is in real terms) */
+  /** Annual inflation (documented but not directly used - everything is in real terms) */
   INFLATION: 0.025,
-  /** Safe withdrawal rate — 4% rule for passive income */
+  /** Safe withdrawal rate - 4% rule for passive income */
   PASSIVE_INCOME_RATE: 0.04,
 } as const;
 
 /**
- * Hypothetical investment-property purchase simulation — triggered when the
+ * Hypothetical investment-property purchase simulation - triggered when the
  * user owns no real estate but has enough liquidity and monthly surplus.
  * Produces a range (low/high scenarios) to give them a taste of what an
  * investment property could do for them.
@@ -68,7 +68,7 @@ export interface PropertyInput {
   mortgageBalance: number;
   /** Monthly mortgage payment */
   monthlyPayment: number;
-  /** Mortgage end — full year, e.g. 2040 */
+  /** Mortgage end - full year, e.g. 2040 */
   endYear: number;
   /** Mortgage end month (1-12) */
   endMonth: number;
@@ -79,7 +79,7 @@ export interface LoanInput {
   amount: number;
   /** Actual monthly payment (principal + interest) */
   monthlyPayment: number;
-  /** Loan end — full year */
+  /** Loan end - full year */
   endYear: number;
   /** Loan end month (1-12) */
   endMonth: number;
@@ -98,7 +98,7 @@ export interface PotentialInputs {
 }
 
 export interface PotentialResult {
-  /** Net worth today, in shekels — the starting point */
+  /** Net worth today, in shekels - the starting point */
   currentNetWorth: number;
   /** Total net worth at the end of the projection, in today's shekels */
   netWorth: number;
@@ -157,7 +157,7 @@ function solveImplicitMonthlyRate(
 ): number {
   if (monthsRemaining <= 0 || monthlyPayment <= 0 || balance <= 0) return 0;
   // If total payments barely cover the principal, there is no positive rate
-  // that fits — treat as 0% and fall back to linear amortization.
+  // that fits - treat as 0% and fall back to linear amortization.
   if (monthlyPayment * monthsRemaining <= balance) return 0;
 
   // Bisection on monthly rate ∈ [1e-6, 0.05] (~0% to ~80% annual)
@@ -228,7 +228,7 @@ function simulateHypothetical(
   const downPayment = price * HYPOTHETICAL.DOWN_PAYMENT_PCT;
   const cashOutOfPocket = downPayment + HYPOTHETICAL.CLOSING_COSTS;
 
-  // Liquid portfolio after purchase — any surplus stays invested
+  // Liquid portfolio after purchase - any surplus stays invested
   let liquidPortfolio = Math.max(0, inputs.otherInvestments - cashOutOfPocket);
 
   // --- Mortgage setup (75% of price, 30-year annuity) ---
@@ -257,7 +257,7 @@ function simulateHypothetical(
   // If horizon is shorter than the planned hold period, don't sell at all.
   const sellAtMonth = totalMonths >= holdMonths ? holdMonths : -1;
 
-  // Additional loans — same handling as main calc
+  // Additional loans - same handling as main calc
   const loans = inputs.additionalLoans.map((loan) => ({
     initialBalance: loan.amount,
     monthlyPayment: loan.monthlyPayment,
@@ -392,7 +392,7 @@ export function calculatePotential(inputs: PotentialInputs): PotentialResult {
   const investmentInitialBalance = inputs.investmentProperty?.mortgageBalance ?? 0;
   const investmentMonthlyPayment = inputs.investmentProperty?.monthlyPayment ?? 0;
 
-  // Each loan has its own monthly payment provided by the user — we use it
+  // Each loan has its own monthly payment provided by the user - we use it
   // directly for cashflow, and approximate the remaining balance at the end
   // of the projection linearly.
   const loans = inputs.additionalLoans.map((loan) => {
@@ -424,7 +424,7 @@ export function calculatePotential(inputs: PotentialInputs): PotentialResult {
       monthlyCashflow -= investmentMonthlyPayment;
     }
 
-    // Additional loans outflow (payments include interest — balance is
+    // Additional loans outflow (payments include interest - balance is
     // tracked separately via linear approximation below)
     for (const loan of loans) {
       if (m <= loan.monthsLeft) {
@@ -441,7 +441,7 @@ export function calculatePotential(inputs: PotentialInputs): PotentialResult {
     liquidPortfolio += monthlyCashflow;
   }
 
-  // Remaining balances — exact amortization using implicit-rate recovery
+  // Remaining balances - exact amortization using implicit-rate recovery
   // from (balance, monthly payment, months remaining).
   const primaryRemainingBalance =
     hasPrimary && totalMonths < primaryMonthsLeft
@@ -502,7 +502,7 @@ export function calculatePotential(inputs: PotentialInputs): PotentialResult {
     remainingLoans;
 
   // Passive income: 4% rule applied to investable net worth
-  // (excludes primary residence — you can't live off your own home)
+  // (excludes primary residence - you can't live off your own home)
   const investableNetWorth =
     Math.max(0, liquidPortfolio) + investmentEquity - remainingLoans;
   const passiveIncomeMonthly =
@@ -564,7 +564,7 @@ export function calculatePotential(inputs: PotentialInputs): PotentialResult {
 // Formatters
 // ---------------------------------------------------------------------------
 
-/** Format a shekel amount into a "magic number" string — e.g. "4.2 מיליון ₪" */
+/** Format a shekel amount into a "magic number" string - e.g. "4.2 מיליון ₪" */
 export function formatMagicNetWorth(amount: number): string {
   if (amount >= 1_000_000) {
     const millions = amount / 1_000_000;
@@ -577,7 +577,7 @@ export function formatMagicNetWorth(amount: number): string {
   return `${Math.round(amount).toLocaleString("he-IL")} ₪`;
 }
 
-/** Format monthly passive income — e.g. "14 אלף ₪" */
+/** Format monthly passive income - e.g. "14 אלף ₪" */
 export function formatMagicIncome(amount: number): string {
   if (amount >= 1_000) {
     const thousands = Math.round(amount / 1_000);
@@ -586,28 +586,28 @@ export function formatMagicIncome(amount: number): string {
   return `${Math.round(amount).toLocaleString("he-IL")} ₪`;
 }
 
-/** Format a net-worth range like "3.2 – 4.8 מיליון ₪" (unit written once) */
+/** Format a net-worth range like "3.2 - 4.8 מיליון ₪" (unit written once) */
 export function formatMagicNetWorthRange(min: number, max: number): string {
   // If both fall in the "millions" bucket, drop the unit on the low side.
   if (min >= 1_000_000 && max >= 1_000_000) {
     const lo = (min / 1_000_000).toFixed(1);
     const hi = (max / 1_000_000).toFixed(1);
-    return `${lo} – ${hi} מיליון ₪`;
+    return `${lo} - ${hi} מיליון ₪`;
   }
   if (min >= 1_000 && max >= 1_000 && max < 1_000_000) {
     const lo = Math.round(min / 1_000).toLocaleString("he-IL");
     const hi = Math.round(max / 1_000).toLocaleString("he-IL");
-    return `${lo} – ${hi} אלף ₪`;
+    return `${lo} - ${hi} אלף ₪`;
   }
-  return `${formatMagicNetWorth(min)} – ${formatMagicNetWorth(max)}`;
+  return `${formatMagicNetWorth(min)} - ${formatMagicNetWorth(max)}`;
 }
 
-/** Format a passive-income range like "11 – 18 אלף ₪" (unit written once) */
+/** Format a passive-income range like "11 - 18 אלף ₪" (unit written once) */
 export function formatMagicIncomeRange(min: number, max: number): string {
   if (min >= 1_000 && max >= 1_000) {
     const lo = Math.round(min / 1_000).toLocaleString("he-IL");
     const hi = Math.round(max / 1_000).toLocaleString("he-IL");
-    return `${lo} – ${hi} אלף ₪`;
+    return `${lo} - ${hi} אלף ₪`;
   }
-  return `${formatMagicIncome(min)} – ${formatMagicIncome(max)}`;
+  return `${formatMagicIncome(min)} - ${formatMagicIncome(max)}`;
 }

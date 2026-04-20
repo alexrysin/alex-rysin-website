@@ -53,7 +53,7 @@ export default function ContactPage() {
             בואו נדבר
           </h1>
           <p className="text-blue-200 text-xl max-w-2xl mx-auto">
-            שיחת היכרות בחינם לגמרי. לא צריך להכין כלום מראש — רק להגיע.
+            שיחת היכרות בחינם לגמרי. לא צריך להכין כלום מראש - רק להגיע.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
@@ -67,7 +67,7 @@ export default function ContactPage() {
       <section className="bg-[#F8F9FA] py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-            {/* Form — 3/5 */}
+            {/* Form - 3/5 */}
             <div className="lg:col-span-3">
               <div className="bg-white rounded-2xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold text-[#1C3879] mb-2">
@@ -214,7 +214,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Sidebar — 2/5 */}
+            {/* Sidebar - 2/5 */}
             <div className="lg:col-span-2 flex flex-col gap-6">
               {/* Direct contact */}
               <div className="bg-white rounded-2xl shadow-sm p-7">
@@ -266,7 +266,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-bold text-lg mb-3">ללא התחייבות</h3>
                 <p className="text-blue-200 text-sm leading-relaxed">
-                  שיחה קצרה שעשויה לשנות הרבה. לא מוכרים, לא לוחצים — רק שיחה אמיתית.
+                  שיחה קצרה שעשויה לשנות הרבה. לא מוכרים, לא לוחצים - רק שיחה אמיתית.
                 </p>
                 <ul className="mt-4 space-y-2">
                   {[

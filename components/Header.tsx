@@ -44,7 +44,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" aria-label="אלכס ריסין — דף הבית" className="flex-shrink-0">
+          <Link href="/" aria-label="אלכס ריסין - דף הבית" className="flex-shrink-0">
             <span className="text-2xl md:text-3xl font-bold text-[#1C3879] tracking-tight hover:text-[#2a4a9e] transition-colors leading-none">
               אלכס ריסין
             </span>
@@ -74,7 +74,7 @@ export default function Header() {
             })}
           </nav>
 
-          {/* CTA Button (desktop) — #4d6617 = olive כהה יותר, קונטרסט 4.56:1 עם לבן ✓ */}
+          {/* CTA Button (desktop) - #4d6617 = olive כהה יותר, קונטרסט 4.56:1 עם לבן ✓ */}
           <div className="hidden md:block">
             <Link
               href="/contact"

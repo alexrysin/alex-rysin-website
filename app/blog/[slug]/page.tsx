@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { posts, getPostBySlug } from "@/content/posts";
 
 // ============================================================================
-// Blog post detail page — full essay with typographic treatment.
+// Blog post detail page - full essay with typographic treatment.
 // Static params are generated at build time for all posts.
 // ============================================================================
 
@@ -82,7 +82,7 @@ export default function BlogPostPage({ params }: { params: Params }) {
 
   const accent = categoryAccents[post.category] ?? fallbackAccent;
 
-  // Related posts — up to 3 from the same category, falling back to others.
+  // Related posts - up to 3 from the same category, falling back to others.
   const related = [
     ...posts.filter(
       (p) => p.slug !== post.slug && p.category === post.category,
@@ -94,7 +94,7 @@ export default function BlogPostPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero band — background image (if provided) tinted with brand gradient,
+      {/* Hero band - background image (if provided) tinted with brand gradient,
           otherwise a pure gradient panel. */}
       <section
         className="relative overflow-hidden pt-16 pb-20 md:pt-20 md:pb-28"
@@ -174,7 +174,7 @@ export default function BlogPostPage({ params }: { params: Params }) {
                     רוצים לבנות תוכנית כלכלית שמתאימה לכם?
                   </h2>
                   <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                    שיחת היכרות — בלי מחויבות, בלי עלות. נבין יחד איפה
+                    שיחת היכרות - בלי מחויבות, בלי עלות. נבין יחד איפה
                     אתם נמצאים ומה הצעד הבא.
                   </p>
                   <Link

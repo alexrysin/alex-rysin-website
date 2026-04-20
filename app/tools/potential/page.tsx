@@ -16,7 +16,7 @@ import {
 } from "./calculate";
 
 // ============================================================================
-// STAGE 2 — Emotional UX: transitions, count-ups, visual polish.
+// STAGE 2 - Emotional UX: transitions, count-ups, visual polish.
 // ============================================================================
 
 // Shared motion variants for step transitions
@@ -183,7 +183,7 @@ function submitToSheet(form: FormState, result: PotentialResult): void {
       : "",
   };
 
-  // Don't await — we don't care about the response. Silent on errors.
+  // Don't await - we don't care about the response. Silent on errors.
   // We POST directly to the Google Apps Script webhook from the client.
   // Apps Script requires text/plain to avoid the CORS preflight, which it
   // doesn't support. The receiving script parses JSON from e.postData.contents.
@@ -238,7 +238,7 @@ export default function PotentialPage() {
         const calculated = calculatePotential(parseInputs(form));
         setResult(calculated);
         // Fire-and-forget submission to Google Sheets via our API route.
-        // Failures are silent — they never affect the user experience.
+        // Failures are silent - they never affect the user experience.
         submitToSheet(form, calculated);
       }
       setStep(next);
@@ -352,7 +352,7 @@ function ProgressBar({ current, total }: { current: number; total: number }) {
 }
 
 // ---------------------------------------------------------------------------
-// CountUp — animated number from 0 to target value
+// CountUp - animated number from 0 to target value
 // ---------------------------------------------------------------------------
 
 function CountUp({
@@ -521,7 +521,7 @@ function BackButton({ onClick }: { onClick: () => void }) {
 }
 
 // ---------------------------------------------------------------------------
-// Step 1 — Welcome
+// Step 1 - Welcome
 // ---------------------------------------------------------------------------
 
 function WelcomeStep({ onNext }: { onNext: () => void }) {
@@ -565,7 +565,7 @@ function WelcomeStep({ onNext }: { onNext: () => void }) {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-gray-600 text-lg leading-relaxed mb-10 max-w-lg mx-auto"
       >
-        כמה שאלות פשוטות, ונראה לכם את הפוטנציאל הכלכלי שלכם —
+        כמה שאלות פשוטות, ונראה לכם את הפוטנציאל הכלכלי שלכם -
         שווי נקי והכנסה חודשית שלא תלויה בעבודה, בעוד כמה שנים.
       </motion.p>
 
@@ -593,7 +593,7 @@ function WelcomeStep({ onNext }: { onNext: () => void }) {
 }
 
 // ---------------------------------------------------------------------------
-// Step 2 — Intro: name, gender, marital status, age, horizon
+// Step 2 - Intro: name, gender, marital status, age, horizon
 // ---------------------------------------------------------------------------
 
 function IntroStep({
@@ -739,7 +739,7 @@ function ChoicePill({
 }
 
 // ---------------------------------------------------------------------------
-// Step 3 — Income & expenses
+// Step 3 - Income & expenses
 // ---------------------------------------------------------------------------
 
 function IncomeStep({
@@ -761,7 +761,7 @@ function IncomeStep({
       <StepHeader
         eyebrow="תזרים חודשי"
         title="מה נכנס ומה יוצא"
-        subtitle="לא צריך להיות מדויק — אומדן טוב מספיק"
+        subtitle="לא צריך להיות מדויק - אומדן טוב מספיק"
       />
 
       <div className="space-y-6">
@@ -782,7 +782,7 @@ function IncomeStep({
             placeholder="18,000"
           />
           <p className="text-xs text-gray-500 mt-2">
-            כולל הכל — משכנתא, מזון, חופשות, וכו&apos;
+            כולל הכל - משכנתא, מזון, חופשות, וכו&apos;
           </p>
         </div>
       </div>
@@ -800,7 +800,7 @@ function IncomeStep({
 }
 
 // ---------------------------------------------------------------------------
-// Step 4 — Assets & liabilities
+// Step 4 - Assets & liabilities
 // ---------------------------------------------------------------------------
 
 function AssetsStep({
@@ -849,7 +849,7 @@ function AssetsStep({
       <StepHeader
         eyebrow="נכסים והתחייבויות"
         title="מה כבר יש לך"
-        subtitle={`${t(form.gender, "סמן", "סמני")} רק את מה שרלוונטי — כל השאר פשוט דלג/י`}
+        subtitle={`${t(form.gender, "סמן", "סמני")} רק את מה שרלוונטי - כל השאר פשוט דלג/י`}
       />
 
       <div className="space-y-6">
@@ -1081,7 +1081,7 @@ function PropertyFields({
 }
 
 // ---------------------------------------------------------------------------
-// Personalized tips — rendered on the result screen
+// Personalized tips - rendered on the result screen
 // ---------------------------------------------------------------------------
 
 interface Tip {
@@ -1095,7 +1095,7 @@ interface Tip {
  * Rules (per product spec):
  *  - No property → always tip 1 ("cornerstone real estate"), plus one of:
  *      liquid > 700k → tip 2 (extra capital → stocks/global RE)
- *      400k ≤ liquid ≤ 700k → tip 4 (passive stock investing — gap fill)
+ *      400k ≤ liquid ≤ 700k → tip 4 (passive stock investing - gap fill)
  *      300k ≤ liquid < 400k → tip 3 (first-hand market purchase)
  *      liquid < 300k → tip 4 (passive stock investing)
  *  - Has property →
@@ -1124,13 +1124,13 @@ function computeTips(form: FormState): Tip[] {
 
   const TIP_1: Tip = {
     icon: "🏠",
-    title: "אבן הפינה — דירה בארץ",
-    body: `ראוי שאבן הפינה של המבנה הכלכלי שלך תהיה רכישה של דירה יחידה בארץ, בין אם למגורים ובין אם להשקעה. בכך ${youWill} שתי מטרות חשובות. האחת היא גידור, לפחות חלקי, מפני עליות עתידיות במחירי הדיור והשכירות — ההוצאה על המגורים מהווה חלק נכבד בהוצאה של כל תא משפחתי בארץ. השנייה היא שבעבודה נכונה ברכישה של דירה טובה ומקדמת להשקעה ניתן להשיג תשואה מצרפית שתתחרה בכבוד על כל אלטרנטיבת השקעה אחרת, בוודאי ברמת סיכון דומה.`,
+    title: "אבן הפינה - דירה בארץ",
+    body: `ראוי שאבן הפינה של המבנה הכלכלי שלך תהיה רכישה של דירה יחידה בארץ, בין אם למגורים ובין אם להשקעה. בכך ${youWill} שתי מטרות חשובות. האחת היא גידור, לפחות חלקי, מפני עליות עתידיות במחירי הדיור והשכירות - ההוצאה על המגורים מהווה חלק נכבד בהוצאה של כל תא משפחתי בארץ. השנייה היא שבעבודה נכונה ברכישה של דירה טובה ומקדמת להשקעה ניתן להשיג תשואה מצרפית שתתחרה בכבוד על כל אלטרנטיבת השקעה אחרת, בוודאי ברמת סיכון דומה.`,
   };
 
   const TIP_2: Tip = {
     icon: "🌍",
-    title: "הון נוסף — שוק ההון ונדל״ן גלובלי",
+    title: "הון נוסף - שוק ההון ונדל״ן גלובלי",
     body: `הכסף הנוסף יכול להיות מושקע בשוק ההון ו/או בנדל״ן מעבר לים, כתלות ב${yourGoals} האישיות וב${yourPrefs} ${asInvestor}.`,
   };
 
@@ -1177,7 +1177,7 @@ function computeTips(form: FormState): Tip[] {
 }
 
 // ---------------------------------------------------------------------------
-// Step 5 — Result
+// Step 5 - Result
 // ---------------------------------------------------------------------------
 
 function ResultStep({
@@ -1295,7 +1295,7 @@ function ResultStep({
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-gray-500 mb-10"
       >
-        בגיל {result.futureAge} — זה מה שאפשר להגיע אליו
+        בגיל {result.futureAge} - זה מה שאפשר להגיע אליו
       </motion.p>
 
       {/* Net worth card */}
@@ -1375,7 +1375,7 @@ function ResultStep({
         </div>
       </motion.div>
 
-      {/* Growth visualization — compound curve from today to future */}
+      {/* Growth visualization - compound curve from today to future */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -1386,9 +1386,9 @@ function ResultStep({
           הצמיחה שלך
         </div>
 
-        {/* Endpoint labels — chart flows LTR: "היום" on the left, future on the right */}
+        {/* Endpoint labels - chart flows LTR: "היום" on the left, future on the right */}
         <div dir="ltr" className="flex items-end justify-between mb-2">
-          {/* Left side — today */}
+          {/* Left side - today */}
           <div className="text-left" dir="rtl">
             <div className="text-[11px] font-semibold text-gray-500 mb-0.5">
               היום
@@ -1397,7 +1397,7 @@ function ResultStep({
               {formatMagicNetWorth(result.currentNetWorth)}
             </div>
           </div>
-          {/* Right side — future (the money shot) */}
+          {/* Right side - future (the money shot) */}
           <div className="text-right" dir="rtl">
             <div className="text-[11px] font-semibold text-gray-500 mb-0.5">
               בעוד {result.yearsAhead} שנים
@@ -1443,7 +1443,7 @@ function ResultStep({
             strokeWidth={1}
           />
 
-          {/* Min/max band — only when we have a scenario range */}
+          {/* Min/max band - only when we have a scenario range */}
           {bandPath && (
             <motion.path
               d={bandPath}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 // ============================================================================
-// Tools index — landing page listing all free financial planning tools.
+// Tools index - landing page listing all free financial planning tools.
 // ============================================================================
 
 const tools = [
@@ -13,7 +13,7 @@ const tools = [
     eyebrow: "מחשבון אישי",
     title: "המספר שלי",
     description:
-      "תוך 5 דקות תגלו את הפוטנציאל הכלכלי האמיתי שלכם — שווי נקי והכנסה חודשית שלא תלויה בעבודה, בעוד כמה שנים.",
+      "תוך 5 דקות תגלו את הפוטנציאל הכלכלי האמיתי שלכם - שווי נקי והכנסה חודשית שלא תלויה בעבודה, בעוד כמה שנים.",
     duration: "5 דקות",
     icon: "💎",
     accent: "from-[#1A365D] via-[#1A365D] to-[#2a4a7a]",
@@ -24,7 +24,7 @@ const tools = [
     eyebrow: "שאלון אבחון",
     title: "מבחן בריאות כלכלית",
     description:
-      "15 שאלות קצרות על הבסיס הכלכלי שלכם — קרן חירום, חובות, חיסכון, תכנון ופיקוח. ציון לכל קטגוריה והמלצות אישיות.",
+      "15 שאלות קצרות על הבסיס הכלכלי שלכם - קרן חירום, חובות, חיסכון, תכנון ופיקוח. ציון לכל קטגוריה והמלצות אישיות.",
     duration: "3 דקות",
     icon: "🩺",
     accent: "from-[#5AC8C8] to-[#4ab8b8]",
@@ -35,7 +35,7 @@ const tools = [
     eyebrow: "מחשבון",
     title: "ריבית דריבית",
     description:
-      "תכננו כמה הכסף שלכם יצמח לאורך השנים — או חשבו איזו תשואה שנתית אתם צריכים כדי להגיע לסכום יעד.",
+      "תכננו כמה הכסף שלכם יצמח לאורך השנים - או חשבו איזו תשואה שנתית אתם צריכים כדי להגיע לסכום יעד.",
     duration: "2 דקות",
     icon: "📈",
     accent: "from-[#D4AF37] via-[#D4AF37] to-[#e6c350]",
@@ -76,7 +76,7 @@ export default function ToolsPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
           >
-            כלים חינמיים שעוזרים לכם לעשות סדר בתמונה הכלכלית שלכם — בלי
+            כלים חינמיים שעוזרים לכם לעשות סדר בתמונה הכלכלית שלכם - בלי
             הרשמה, בלי מחויבות, ועם תוצאה מיידית.
           </motion.p>
         </div>
@@ -98,7 +98,7 @@ export default function ToolsPage() {
                 href={tool.href}
                 className="group block h-full bg-white rounded-3xl shadow-[0_20px_60px_-25px_rgba(26,54,93,0.2)] border border-gray-100 overflow-hidden hover:shadow-[0_25px_70px_-20px_rgba(26,54,93,0.3)] hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Top accent strip — echoes the tool's visual identity */}
+                {/* Top accent strip - echoes the tool's visual identity */}
                 <div
                   className={`relative overflow-hidden bg-gradient-to-br ${tool.accent} p-8 md:p-10`}
                 >

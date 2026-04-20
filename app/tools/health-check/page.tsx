@@ -13,7 +13,7 @@ import {
 } from "./quiz";
 
 // ============================================================================
-// Financial Health Check — welcome / quiz / result
+// Financial Health Check - welcome / quiz / result
 // ============================================================================
 
 type Step = "welcome" | "quiz" | "result";
@@ -120,7 +120,7 @@ function WelcomeStep({ onStart }: { onStart: () => void }) {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-gray-600 text-lg leading-relaxed mb-10 max-w-lg mx-auto"
       >
-        15 שאלות קצרות על הבסיס הכלכלי שלכם. בסוף תקבלו ציון לכל קטגוריה —
+        15 שאלות קצרות על הבסיס הכלכלי שלכם. בסוף תקבלו ציון לכל קטגוריה -
         והכיוונים שהכי חשוב להתחיל לעבוד עליהם.
       </motion.p>
 
@@ -162,7 +162,7 @@ function WelcomeStep({ onStart }: { onStart: () => void }) {
 }
 
 // ---------------------------------------------------------------------------
-// Quiz step — one question at a time with progress bar and auto-advance
+// Quiz step - one question at a time with progress bar and auto-advance
 // ---------------------------------------------------------------------------
 
 function QuizStep({
@@ -290,7 +290,7 @@ function AnswerButton({
 }
 
 // ---------------------------------------------------------------------------
-// Result step — overall score, radar chart, recommendations, CTA
+// Result step - overall score, radar chart, recommendations, CTA
 // ---------------------------------------------------------------------------
 
 function ResultStep({
@@ -453,7 +453,7 @@ function ResultStep({
 }
 
 // ---------------------------------------------------------------------------
-// Radar chart — 5 axes, SVG
+// Radar chart - 5 axes, SVG
 // ---------------------------------------------------------------------------
 
 function RadarChart({ result }: { result: QuizResult }) {
@@ -567,7 +567,7 @@ function RadarChart({ result }: { result: QuizResult }) {
           />
         ))}
 
-        {/* Labels — rendered as HTML via foreignObject so Hebrew RTL text
+        {/* Labels - rendered as HTML via foreignObject so Hebrew RTL text
             wraps naturally without clashing at the bottom of the chart. */}
         {cats.map((c, i) => {
           const a = angleAt(i);
@@ -604,7 +604,7 @@ function RadarChart({ result }: { result: QuizResult }) {
               height={LABEL_BOX_H}
             >
               <div
-                // @ts-expect-error — xmlns is required inside SVG foreignObject
+                // @ts-expect-error - xmlns is required inside SVG foreignObject
                 xmlns="http://www.w3.org/1999/xhtml"
                 style={{
                   width: "100%",
@@ -668,7 +668,7 @@ function PrimaryButton({
   );
 }
 
-/** Count-up number — animates from 0 to target over `duration` ms. */
+/** Count-up number - animates from 0 to target over `duration` ms. */
 function CountUp({
   to,
   duration = 1500,
@@ -706,7 +706,7 @@ function CountUp({
 }
 
 // ---------------------------------------------------------------------------
-// Submission — fire-and-forget to our API route
+// Submission - fire-and-forget to our API route
 // ---------------------------------------------------------------------------
 
 function submitToSheet(

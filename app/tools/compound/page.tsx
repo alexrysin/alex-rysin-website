@@ -5,15 +5,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 // ============================================================================
-// Compound interest calculator — two modes:
-//   • forward  — given initial + monthly + rate + years → final value
-//   • reverse  — given initial + monthly + target + years → required rate
+// Compound interest calculator - two modes:
+//   • forward  - given initial + monthly + rate + years → final value
+//   • reverse  - given initial + monthly + target + years → required rate
 // All math uses monthly compounding in REAL terms (the rate the user types is
 // always real). The "בערכים של היום" toggle is purely a display switch:
-//   • ON  — show sums in today's purchasing power (the raw real result)
-//   • OFF — show the same sums inflated by (1 + INFLATION)^years, so the user
+//   • ON  - show sums in today's purchasing power (the raw real result)
+//   • OFF - show the same sums inflated by (1 + INFLATION)^years, so the user
 //           can see what the number "will look like" in nominal future money.
-// In reverse mode the target input is interpreted in the same lens — when the
+// In reverse mode the target input is interpreted in the same lens - when the
 // toggle is off, the user is typing a nominal future-dollar target, and we
 // convert it back to real before solving for the required rate.
 // ============================================================================
@@ -107,7 +107,7 @@ function solveRate(
   if (years <= 0 || target <= 0) return null;
   const minReachable = P + M * years * 12;
   if (target <= minReachable) {
-    // Target is already reachable with zero return — no growth needed.
+    // Target is already reachable with zero return - no growth needed.
     return { rate: 0, feasible: true };
   }
   // Upper bound check: 100% annual nominal return.
@@ -175,7 +175,7 @@ export default function CompoundPage() {
     effectiveRate = solution?.rate ?? 0;
   }
 
-  // Final value in REAL terms (today's money) — this is what the math produces.
+  // Final value in REAL terms (today's money) - this is what the math produces.
   const finalValueReal =
     form.mode === "forward"
       ? finalBalance(P, M, effectiveRate, years)
@@ -387,7 +387,7 @@ export default function CompoundPage() {
 }
 
 // ---------------------------------------------------------------------------
-// Result card — different content per mode
+// Result card - different content per mode
 // ---------------------------------------------------------------------------
 
 function ResultCard({
@@ -483,10 +483,10 @@ function ResultCard({
       "היעד קשה להשגה בתנאים הנוכחיים. נסו להאריך את התקופה, להגדיל את ההפקדה החודשית, או להוריד את היעד.";
   } else if (ratePct < 0.1) {
     note =
-      "אתם כבר בדרך — ההפקדות בלבד מספיקות כדי להגיע ליעד. כל תשואה נוספת היא בונוס.";
+      "אתם כבר בדרך - ההפקדות בלבד מספיקות כדי להגיע ליעד. כל תשואה נוספת היא בונוס.";
   } else if (ratePct <= 4) {
     note =
-      "תשואה שמרנית. ניתן להגיע לזה גם עם תיק סולידי יחסית — אג״ח, פיקדונות, וקצת מניות.";
+      "תשואה שמרנית. ניתן להגיע לזה גם עם תיק סולידי יחסית - אג״ח, פיקדונות, וקצת מניות.";
   } else if (ratePct <= 7) {
     note =
       "תשואה ריאלית סבירה לטווח ארוך, בתיק מניות מפוזר גלובלית. עקבי ולא דרמטי.";
@@ -517,7 +517,7 @@ function ResultCard({
           dir="ltr"
           className="text-[3.2rem] md:text-[4.5rem] font-bold text-white tracking-tight mb-5 leading-none"
         >
-          {feasible ? ratePct.toFixed(1) : "—"}
+          {feasible ? ratePct.toFixed(1) : "-"}
           <span className="text-3xl md:text-4xl text-white/60 mr-1">%</span>
         </div>
         <p
@@ -533,7 +533,7 @@ function ResultCard({
 }
 
 // ---------------------------------------------------------------------------
-// Growth chart — stacked areas: contributions (gray) + compound gain (teal)
+// Growth chart - stacked areas: contributions (gray) + compound gain (teal)
 // ---------------------------------------------------------------------------
 
 function GrowthChart({
@@ -580,7 +580,7 @@ function GrowthChart({
     )
     .join(" ");
 
-  // Closed polygon — baseline → up the balance curve → back to baseline
+  // Closed polygon - baseline → up the balance curve → back to baseline
   const balanceArea =
     `M ${xAt(0).toFixed(1)} ${baseY.toFixed(1)} ` +
     sampled
@@ -590,7 +590,7 @@ function GrowthChart({
       .join(" ") +
     ` L ${xAt(1).toFixed(1)} ${baseY.toFixed(1)} Z`;
 
-  // Contributions polygon — covers the bottom portion of the balance area.
+  // Contributions polygon - covers the bottom portion of the balance area.
   const contribArea =
     `M ${xAt(0).toFixed(1)} ${baseY.toFixed(1)} ` +
     sampled
@@ -625,9 +625,9 @@ function GrowthChart({
         </div>
       </div>
 
-      {/* Endpoint labels — LTR flow to match the chart's left-to-right axis.
+      {/* Endpoint labels - LTR flow to match the chart's left-to-right axis.
           "היום" is always today's money (unscaled). The right label follows
-          the lens — real or nominal future equivalent. */}
+          the lens - real or nominal future equivalent. */}
       <div dir="ltr" className="flex items-end justify-between mb-2 px-1">
         <div className="text-left" dir="rtl">
           <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
@@ -690,7 +690,7 @@ function GrowthChart({
           transition={{ duration: 0.8, delay: 0.9 }}
         />
 
-        {/* Contributions area — layered on top, hiding the bottom portion */}
+        {/* Contributions area - layered on top, hiding the bottom portion */}
         <motion.path
           d={contribArea}
           fill="#D1D5DB"
