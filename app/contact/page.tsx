@@ -236,13 +236,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-[#1C3879] text-sm">וואטסאפ</p>
-                    <p className="text-gray-500 text-xs mt-0.5">050-123-4567</p>
+                    <p className="text-gray-500 text-xs mt-0.5">054-4580159</p>
                   </div>
                 </a>
 
                 {/* Email */}
                 <a
-                  href="mailto:alex@example.com"
+                  href="mailto:alex@alexrysin.co.il"
                   className="flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors group mb-4"
                 >
                   <div className="w-12 h-12 bg-[#1C3879] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
@@ -252,22 +252,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-[#1C3879] text-sm">דואר אלקטרוני</p>
-                    <p className="text-gray-500 text-xs mt-0.5">alex@example.com</p>
+                    <p className="text-gray-500 text-xs mt-0.5">alex@alexrysin.co.il</p>
                   </div>
                 </a>
-
-                {/* Hours */}
-                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                  <div className="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#1C3879] text-sm">שעות פעילות</p>
-                    <p className="text-gray-500 text-xs mt-0.5">ראשון–חמישי, 9:00–18:00</p>
-                  </div>
-                </div>
               </div>
 
               {/* Reassurance card */}
