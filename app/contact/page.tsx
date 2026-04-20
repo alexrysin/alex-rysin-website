@@ -53,7 +53,7 @@ export default function ContactPage() {
             בואו נדבר
           </h1>
           <p className="text-blue-200 text-xl max-w-2xl mx-auto">
-            שיחת היכרות של 30 דקות, בחינם לגמרי. לא צריך להכין כלום מראש — רק להגיע.
+            שיחת היכרות בחינם לגמרי. לא צריך להכין כלום מראש — רק להגיע.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
