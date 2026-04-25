@@ -10,6 +10,7 @@ export default function ContactPage() {
     phone: "",
     email: "",
     message: "",
+    _gotcha: "",
   });
 
   const handleChange = (
@@ -23,7 +24,7 @@ export default function ContactPage() {
     setFormState("submitting");
 
     try {
-      const res = await fetch("https://formspree.io/f/PLACEHOLDER", {
+      const res = await fetch("https://formspree.io/f/xrerjwgy", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
@@ -31,7 +32,7 @@ export default function ContactPage() {
 
       if (res.ok) {
         setFormState("success");
-        setFormData({ name: "", phone: "", email: "", message: "" });
+        setFormData({ name: "", phone: "", email: "", message: "", _gotcha: "" });
       } else {
         setFormState("error");
       }
@@ -97,6 +98,18 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Honeypot — hidden from humans, bots fill it and Formspree drops the submission */}
+                    <input
+                      type="text"
+                      name="_gotcha"
+                      value={formData._gotcha}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+                    />
+
                     {/* Name */}
                     <div>
                       <label

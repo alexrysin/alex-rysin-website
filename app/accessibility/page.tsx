@@ -50,14 +50,14 @@ export default function AccessibilityPage() {
               <h2 className="text-2xl font-bold text-[#1C3879] mb-3">תכונות הנגישות באתר</h2>
               <ul className="space-y-2 list-none pr-0">
                 {[
-                  "קישור &quot;דלג לתוכן הראשי&quot; בראש כל עמוד",
+                  'קישור "דלג לתוכן הראשי" בראש כל עמוד',
                   "תמיכה מלאה בניווט מקלדת",
                   "תוויות ARIA לכל אלמנטים אינטראקטיביים",
-                  "שפת העמוד מוגדרת לעברית (lang=\"he\")",
+                  'שפת העמוד מוגדרת לעברית (lang="he")',
                   "כיוון טקסט RTL מלא",
                   "יחסי קונטרסט צבעים עומדים בדרישות WCAG AA",
                   "אנימציות מושבתות עבור משתמשים עם prefers-reduced-motion",
-                  "תמיות עבור שגיאות טפסים (role=\"alert\")",
+                  'תמיות עבור שגיאות טפסים (role="alert")',
                   "ניווט מובנה עם aria-current לציון עמוד פעיל",
                   "תמיות ARIA לתפריט הנייד (aria-expanded, aria-controls)",
                 ].map((item, i) => (
@@ -65,7 +65,7 @@ export default function AccessibilityPage() {
                     <svg className="w-5 h-5 text-[#4d6617] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>

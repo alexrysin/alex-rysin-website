@@ -25,10 +25,23 @@ AuthUserFile "/REPLACE/WITH/ABSOLUTE/PATH/TO/.htpasswd"
 Require valid-user
 
 # ----------------------------------------------------------------------------
-# 2. Tell search engines to stay out
+# 2. Tell search engines to stay out + security headers
 # ----------------------------------------------------------------------------
 <IfModule mod_headers.c>
   Header set X-Robots-Tag "noindex, nofollow, noarchive"
+
+  # Security headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # CSP — adjust if you add analytics or 3rd-party scripts later.
+  # Allows: self for everything, Google Fonts, Formspree submissions,
+  # data: URIs for inline SVG/fonts, https: images, and 'unsafe-inline' styles
+  # (needed for Tailwind/Next.js inline styles).
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'self'; form-action 'self' https://formspree.io; base-uri 'self';"
 </IfModule>
 
 # ----------------------------------------------------------------------------

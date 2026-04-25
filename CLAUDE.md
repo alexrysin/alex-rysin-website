@@ -63,7 +63,7 @@ Photos are in both `assets/` (original) and `public/assets/` (served by Next.js)
 Real content to be filled in later is marked with Hebrew bracket notation:
 - `[ציטוט לקוח — שם וציטוט יתווספו כאן]` — Testimonials
 - `[סיפור אישי של אלכס יתווסף כאן]` — About page story
-- Formspree endpoint: replace `PLACEHOLDER` in `app/contact/page.tsx`
+- Formspree endpoint: configured in `app/contact/page.tsx` (form ID `xrerjwgy`)
 - WhatsApp number: replace `972501234567` across all files
 
 ## SEO
