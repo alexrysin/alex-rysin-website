@@ -1,36 +1,32 @@
 # ============================================================================
-# .htaccess — pre-launch configuration for box.co.il (Apache shared hosting).
+# .htaccess — production configuration for box.co.il (Apache shared hosting).
 #
-# This file is copied verbatim into `out/` by Next.js static export because it
-# lives in `public/`. It does three things:
-#   1. Password-protects the entire site (HTTP Basic Auth).
-#   2. Tells search engines not to index anything (X-Robots-Tag).
-#   3. Handles Next.js-style clean URLs (falls back to index.html).
+# This file is copied verbatim into `out/` by Next.js static export, BUT the
+# GitHub deploy action excludes it (.htaccess on the server is the source of
+# truth — it is edited directly via cPanel File Manager). Keep this template
+# in sync with the server so the local copy matches reality.
 #
-# When going live, comment out or remove the AuthType block to open the site,
-# and change the X-Robots-Tag to "all" (or remove the block entirely).
+# Sections:
+#   1. Domain redirect (growingfamily.co.il -> alexrysin.co.il)
+#   2. Security headers (CSP, HSTS, etc.)
+#   3. Clean URLs (Next.js static export trailing-slash routing)
+#   4. Aggressive caching for static assets
+#   5. LiteSpeed compatibility
 # ============================================================================
 
 # ----------------------------------------------------------------------------
-# 1. Password protection (HTTP Basic Auth)
+# 1. Redirect old domain -> new domain (preserves SEO from growingfamily.co.il)
 # ----------------------------------------------------------------------------
-# IMPORTANT: the AuthUserFile path below is a placeholder. You must edit it
-# once after uploading to match the real absolute path on the box.co.il
-# server — e.g. /home/yourcpaneluser/.htpasswds/alex-rysin/passwd
-# See the deploy guide in the chat for how to find this path.
-
-AuthType Basic
-AuthName "Alex Rysin — pre-launch (enter password)"
-AuthUserFile "/REPLACE/WITH/ABSOLUTE/PATH/TO/.htpasswd"
-Require valid-user
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?growingfamily\.co\.il$ [NC]
+  RewriteRule ^(.*)$ https://alexrysin.co.il/$1 [R=301,L]
+</IfModule>
 
 # ----------------------------------------------------------------------------
-# 2. Tell search engines to stay out + security headers
+# 2. Security headers
 # ----------------------------------------------------------------------------
 <IfModule mod_headers.c>
-  Header set X-Robots-Tag "noindex, nofollow, noarchive"
-
-  # Security headers
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
@@ -38,9 +34,6 @@ Require valid-user
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 
   # CSP — adjust if you add analytics or 3rd-party scripts later.
-  # Allows: self for everything, Google Fonts, Formspree submissions,
-  # data: URIs for inline SVG/fonts, https: images, and 'unsafe-inline' styles
-  # (needed for Tailwind/Next.js inline styles).
   Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'self'; form-action 'self' https://formspree.io; base-uri 'self';"
 </IfModule>
 
@@ -59,12 +52,11 @@ Require valid-user
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
 
-  # Fallback: Next's 404 page
   ErrorDocument 404 /404.html
 </IfModule>
 
 # ----------------------------------------------------------------------------
-# 4. Cache static assets aggressively (optional, speeds up returning visits)
+# 4. Cache static assets aggressively
 # ----------------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -75,4 +67,11 @@ Require valid-user
   ExpiresByType text/css   "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ----------------------------------------------------------------------------
+# 5. LiteSpeed compatibility
+# ----------------------------------------------------------------------------
+<IfModule LiteSpeed>
+  SetEnv noabort 1
 </IfModule>

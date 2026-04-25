@@ -15,16 +15,14 @@ export const metadata: Metadata = {
   title: "אלכס ריסין | תכנון פיננסי ועצמאות כלכלית",
   description:
     "תכנון פיננסי אישי שמוביל לעצמאות כלכלית. אלכס ריסין מלווה אתכם מהבהירות ועד לביצוע בפועל.",
-  // Pre-launch: block indexing at the meta tag level. Remove (or flip to
-  // index: true) once the site is ready to go public.
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
