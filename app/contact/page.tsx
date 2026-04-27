@@ -98,17 +98,20 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Honeypot — hidden from humans, bots fill it and Formspree drops the submission */}
-                    <input
-                      type="text"
-                      name="_gotcha"
-                      value={formData._gotcha}
-                      onChange={handleChange}
-                      tabIndex={-1}
-                      autoComplete="off"
-                      aria-hidden="true"
-                      style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
-                    />
+                    {/* Honeypot — hidden from humans, bots fill it and Formspree drops the submission.
+                        Wrapper has 0x0 size with overflow:hidden so the negative-positioned input
+                        cannot leak into the document flow (otherwise RTL layouts on mobile browsers
+                        scroll to the empty negative space and show a blank page). */}
+                    <div aria-hidden="true" style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
+                      <input
+                        type="text"
+                        name="_gotcha"
+                        value={formData._gotcha}
+                        onChange={handleChange}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
 
                     {/* Name */}
                     <div>
