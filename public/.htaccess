@@ -70,6 +70,11 @@
 # ----------------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
+  # HTML: always revalidate so users see new deploys immediately.
+  # Hashed JS/CSS/font filenames change on every build, so they're safe to
+  # cache long-term — but the HTML that references them must always be fresh.
+  ExpiresByType text/html "access plus 0 seconds"
+
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/png  "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
@@ -77,6 +82,13 @@
   ExpiresByType text/css   "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Force HTML revalidation on every request (lightweight 304 if unchanged).
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
 </IfModule>
 
 # ----------------------------------------------------------------------------
