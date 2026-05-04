@@ -25,6 +25,16 @@ const categoryAccents: Record<string, { from: string; to: string; text: string }
 
 const fallbackAccent = { from: "#1A365D", to: "#2a4a7a", text: "#5AC8C8" };
 
+const HEBREW_MONTHS = [
+  "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני",
+  "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר",
+];
+
+function formatPostDate(iso: string): string {
+  const [y, m] = iso.split("-");
+  return `${HEBREW_MONTHS[parseInt(m, 10) - 1]} ${y}`;
+}
+
 export default function BlogPage() {
   const allCategories = useMemo(() => {
     const set = new Set<string>();
@@ -232,8 +242,10 @@ function FeaturedCard({ post }: { post: (typeof posts)[number] }) {
 
         {/* Text side */}
         <div className="md:col-span-3 p-7 md:p-10 flex flex-col">
-          <div className="text-xs text-gray-400 mb-3">
-            קריאה של {post.readMinutes} דקות
+          <div className="text-xs text-gray-400 mb-3 flex items-center gap-2">
+            <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+            <span aria-hidden>·</span>
+            <span>קריאה של {post.readMinutes} דקות</span>
           </div>
           <h2 className="text-2xl md:text-[1.7rem] font-bold text-[#1C3879] leading-snug mb-4 group-hover:text-[#2a4a7a] transition-colors">
             {post.title}
@@ -306,8 +318,10 @@ function PostCard({ post }: { post: (typeof posts)[number] }) {
           {post.excerpt}
         </p>
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="text-xs font-semibold text-gray-400">
-            ⏱ {post.readMinutes} דק׳
+          <div className="text-xs font-semibold text-gray-400 flex items-center gap-2">
+            <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+            <span aria-hidden>·</span>
+            <span>⏱ {post.readMinutes} דק׳</span>
           </div>
           <div className="inline-flex items-center gap-2 text-[#1C3879] font-bold text-sm group-hover:gap-3 transition-all">
             <span>קרא עוד</span>

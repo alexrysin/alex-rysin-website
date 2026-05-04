@@ -7,7 +7,7 @@
 export interface BlogPost {
   slug: string;
   title: string;
-  /** ISO yyyy-mm-dd - used only for ordering, not displayed. */
+  /** ISO yyyy-mm-dd - displayed (month+year) and used for ordering. */
   date: string;
   category: string;
   excerpt: string;

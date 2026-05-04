@@ -39,6 +39,16 @@ const categoryAccents: Record<string, { from: string; to: string; text: string }
 
 const fallbackAccent = { from: "#1A365D", to: "#2a4a7a", text: "#5AC8C8" };
 
+const HEBREW_MONTHS = [
+  "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני",
+  "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר",
+];
+
+function formatPostDate(iso: string): string {
+  const [y, m] = iso.split("-");
+  return `${HEBREW_MONTHS[parseInt(m, 10) - 1]} ${y}`;
+}
+
 // Render the post body as paragraphs. Blank lines separate paragraphs.
 // Lines starting with a decorator ("***", "---") are rendered as dividers.
 function renderBody(body: string) {
@@ -145,6 +155,8 @@ export default function BlogPostPage({ params }: { params: Params }) {
           </h1>
 
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
+            <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+            <span className="opacity-60">·</span>
             <span>קריאה של {post.readMinutes} דקות</span>
             <span className="opacity-60">·</span>
             <span>מאת אלכס ריסין</span>
