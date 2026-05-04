@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPostBySlug } from "@/content/posts";
+import { blogPostingSchema, jsonLdScript } from "@/lib/schema";
 
 // ============================================================================
 // Blog post detail page - full essay with typographic treatment.
@@ -22,9 +23,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   if (!post) return { title: "מאמר לא נמצא | אלכס ריסין" };
+  const ogImage = post.image
+    ? `https://alexrysin.co.il${post.image}`
+    : "https://alexrysin.co.il/assets/why-me.jpg";
   return {
     title: `${post.title} | אלכס ריסין`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["אלכס ריסין"],
+      images: [{ url: ogImage, alt: post.title }],
+      url: `https://alexrysin.co.il/blog/${post.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
+    },
   };
 }
 
@@ -102,8 +121,20 @@ export default function BlogPostPage({ params }: { params: Params }) {
     ),
   ].slice(0, 3);
 
+  const schema = blogPostingSchema({
+    title: post.title,
+    description: post.excerpt,
+    date: post.date,
+    slug: post.slug,
+    image: post.image,
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
+      />
       {/* Hero band - background image (if provided) tinted with brand gradient,
           otherwise a pure gradient panel. */}
       <section

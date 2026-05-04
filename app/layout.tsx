@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { personSchema, professionalServiceSchema, jsonLdScript } from "@/lib/schema";
 
 const heebo = Heebo({
   subsets: ["latin", "hebrew"],
@@ -11,7 +12,11 @@ const heebo = Heebo({
   display: "swap",
 });
 
+const SITE_URL = "https://alexrysin.co.il";
+const OG_IMAGE = `${SITE_URL}/assets/why-me.jpg`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "אלכס ריסין | תכנון פיננסי ועצמאות כלכלית",
   description:
     "תכנון פיננסי אישי שמוביל לעצמאות כלכלית. אלכס ריסין מלווה אתכם מהבהירות ועד לביצוע בפועל.",
@@ -29,8 +34,25 @@ export const metadata: Metadata = {
     title: "אלכס ריסין | תכנון פיננסי ועצמאות כלכלית",
     description:
       "תכנון פיננסי אישי שמוביל לעצמאות כלכלית. אלכס ריסין מלווה אתכם מהבהירות ועד לביצוע בפועל.",
+    url: SITE_URL,
+    siteName: "אלכס ריסין - תכנון פיננסי",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1024,
+        height: 683,
+        alt: "אלכס ריסין - מתכנן פיננסי",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "אלכס ריסין | תכנון פיננסי ועצמאות כלכלית",
+    description:
+      "תכנון פיננסי אישי שמוביל לעצמאות כלכלית.",
+    images: [OG_IMAGE],
   },
 };
 
@@ -41,6 +63,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" className={heebo.variable}>
+      <head>
+        {/* Preload hero image used above the fold on the home page */}
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/squeeze.jpg"
+          fetchPriority="high"
+        />
+        {/* JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(professionalServiceSchema) }}
+        />
+      </head>
       <body className="font-heebo antialiased">
         {/* Skip to main content - נגישות */}
         <a

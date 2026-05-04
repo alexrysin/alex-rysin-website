@@ -74,9 +74,28 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold text-[#1C3879] mb-2">
                   שלחו הודעה
                 </h2>
-                <p className="text-gray-500 text-sm mb-7">
-                  אחזור אליכם בתוך יום עסקים אחד.
-                </p>
+                <div className="flex items-center gap-2 mb-5 text-[#5A781E] font-semibold text-sm">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>אני חוזר תוך יום עסקים אחד. תמיד.</span>
+                </div>
+
+                {/* Trust strip */}
+                <div className="grid grid-cols-3 gap-2 mb-6 pb-6 border-b border-gray-100">
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-[#1C3879]">200+</div>
+                    <div className="text-[11px] text-gray-500">משפחות</div>
+                  </div>
+                  <div className="text-center border-x border-gray-100">
+                    <div className="text-lg font-bold text-[#1C3879]">8+</div>
+                    <div className="text-[11px] text-gray-500">שנות ניסיון</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-[#1C3879]">0</div>
+                    <div className="text-[11px] text-gray-500">מוצרים שאני מוכר</div>
+                  </div>
+                </div>
 
                 {formState === "success" ? (
                   <div className="text-center py-12">
@@ -133,26 +152,6 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    {/* Phone */}
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-semibold text-gray-700 mb-1.5"
-                      >
-                        טלפון
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="050-123-4567"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1C3879] focus:ring-2 focus:ring-[#1C3879] focus:ring-opacity-20 outline-none transition text-right bg-gray-50 focus:bg-white"
-                        dir="ltr"
-                      />
-                    </div>
-
                     {/* Email */}
                     <div>
                       <label
@@ -169,6 +168,26 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1C3879] focus:ring-2 focus:ring-[#1C3879] focus:ring-opacity-20 outline-none transition text-right bg-gray-50 focus:bg-white"
+                        dir="ltr"
+                      />
+                    </div>
+
+                    {/* Phone (optional) */}
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-semibold text-gray-700 mb-1.5"
+                      >
+                        טלפון <span className="text-gray-400 font-normal">(אופציונלי)</span>
+                      </label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="050-123-4567"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1C3879] focus:ring-2 focus:ring-[#1C3879] focus:ring-opacity-20 outline-none transition text-right bg-gray-50 focus:bg-white"
                         dir="ltr"
                       />
@@ -225,6 +244,27 @@ export default function ContactPage() {
                     <p className="text-gray-400 text-xs text-center">
                       הפרטים ישמשו ליצירת קשר בלבד ולא יועברו לצד שלישי.
                     </p>
+
+                    {/* What happens next */}
+                    <div className="mt-6 pt-6 border-t border-gray-100">
+                      <p className="text-xs font-semibold text-gray-500 mb-3 text-center">
+                        מה קורה אחרי שתשלחו?
+                      </p>
+                      <ol className="space-y-2 text-sm text-gray-600">
+                        <li className="flex items-start gap-3">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1C3879] text-white text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                          <span>אני חוזר אליכם תוך יום עסקים אחד</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1C3879] text-white text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                          <span>שיחת היכרות של כ-30 דקות, ללא עלות וללא התחייבות</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1C3879] text-white text-xs font-bold flex items-center justify-center mt-0.5">3</span>
+                          <span>אם זה מתאים - נמשיך. אם לא - אכוון אתכם לאן כן.</span>
+                        </li>
+                      </ol>
+                    </div>
                   </form>
                 )}
               </div>

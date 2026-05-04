@@ -129,6 +129,9 @@ export default function HomePage() {
               src="/assets/squeeze.jpg"
               alt="אלכס ריסין - יועץ פיננסי"
               className="w-[200px] h-[200px] object-cover rounded-2xl shadow-xl"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </motion.div>
 
@@ -159,6 +162,9 @@ export default function HomePage() {
             src="/assets/squeeze.jpg"
             alt="אלכס ריסין - יועץ פיננסי"
             className="w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </motion.div>
 
