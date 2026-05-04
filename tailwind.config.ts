@@ -16,9 +16,9 @@ const config: Config = {
         },
         "blue-mid": "#4A6FA5",
         olive: {
-          DEFAULT: "#6B8E23",
-          light: "#7ea328",
-          dark: "#5a781e",
+          DEFAULT: "#5A781E",
+          light: "#6B8E23",
+          dark: "#476016",
         },
       },
       fontFamily: {

@@ -70,7 +70,7 @@ const testimonials = [
 function CheckIcon() {
   return (
     <svg
-      className="w-6 h-6 text-[#6B8E23] flex-shrink-0 mt-0.5"
+      className="w-6 h-6 text-[#5A781E] flex-shrink-0 mt-0.5"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -140,7 +140,7 @@ export default function HomePage() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#6B8E23] hover:bg-[#5a781e] text-white font-bold px-12 py-5 rounded-xl transition-all duration-300 text-lg shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 bg-[#5A781E] hover:bg-[#476016] text-white font-bold px-12 py-5 rounded-xl transition-all duration-300 text-lg shadow-lg hover:-translate-y-0.5"
             >
               קבעו שיחת היכרות
             </Link>
@@ -394,7 +394,7 @@ export default function HomePage() {
                 className="bg-[#243f8a] rounded-2xl p-7 flex flex-col gap-4 relative"
               >
                 {/* Quote mark */}
-                <div className="text-6xl text-[#6B8E23] font-serif leading-none select-none">
+                <div className="text-6xl text-[#5A781E] font-serif leading-none select-none">
                   &ldquo;
                 </div>
                 <p className="text-blue-100 leading-relaxed text-sm flex-1 -mt-4">
@@ -437,7 +437,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6B8E23] hover:bg-[#5a781e] text-white font-bold px-12 py-5 rounded-xl transition-all duration-300 text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-[#5A781E] hover:bg-[#476016] text-white font-bold px-12 py-5 rounded-xl transition-all duration-300 text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               רוצים להתחיל? דברו איתי
             </Link>

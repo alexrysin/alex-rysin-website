@@ -192,7 +192,7 @@ export default function TestimonialsPage() {
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6B8E23] hover:bg-[#5a781e] text-white font-semibold px-10 py-5 rounded-[14px] transition-all duration-200 text-lg shadow-[0_10px_24px_rgba(0,0,0,0.08)] hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)]"
+              className="inline-flex items-center gap-2 bg-[#5A781E] hover:bg-[#476016] text-white font-semibold px-10 py-5 rounded-[14px] transition-all duration-200 text-lg shadow-[0_10px_24px_rgba(0,0,0,0.08)] hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)]"
             >
               קבעו שיחת היכרות
             </Link>

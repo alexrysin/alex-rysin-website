@@ -101,7 +101,7 @@ export default function AboutPage() {
                   <div className="text-sm text-gray-500 mt-1">לקוחות מרוצים</div>
                 </div>
                 <div className="bg-blue-50 rounded-xl p-4 flex-1 min-w-[140px] text-center">
-                  <div className="text-2xl font-bold text-[#6B8E23]">100%</div>
+                  <div className="text-2xl font-bold text-[#5A781E]">100%</div>
                   <div className="text-sm text-gray-500 mt-1">ייעוץ בלתי תלוי</div>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6B8E23] hover:bg-[#5a781e] text-white font-bold px-10 py-4 rounded-xl transition-all duration-300 text-lg shadow-lg"
+              className="inline-flex items-center gap-2 bg-[#5A781E] hover:bg-[#476016] text-white font-bold px-10 py-4 rounded-xl transition-all duration-300 text-lg shadow-lg"
             >
               קבעו שיחת היכרות חינם
             </Link>
