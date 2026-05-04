@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import Link from "next/link";
+import Picture from "@/components/Picture";
 
 // ---- Animation variants ----
 const fadeUp = {
@@ -125,13 +126,12 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:hidden mt-6 mb-6"
           >
-            <img
+            <Picture
               src="/assets/squeeze.jpg"
               alt="אלכס ריסין - יועץ פיננסי"
               className="w-[200px] h-[200px] object-cover rounded-2xl shadow-xl"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
+              priority
+              sizes="200px"
             />
           </motion.div>
 
@@ -158,13 +158,12 @@ export default function HomePage() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="hidden lg:flex lg:w-[35%] items-center justify-center p-12"
         >
-          <img
+          <Picture
             src="/assets/squeeze.jpg"
             alt="אלכס ריסין - יועץ פיננסי"
             className="w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
+            priority
+            sizes="(min-width: 1024px) 35vw, 100vw"
           />
         </motion.div>
 
@@ -361,10 +360,11 @@ export default function HomePage() {
                   המטרה שלי היא לא לנהל לכם את הכסף - אלא שתדעו לנהל את ההחלטות שלכם.
                 </p>
                 <div className="relative inline-flex items-center gap-[10px] justify-start">
-                  <img
+                  <Picture
                     src="/assets/why-me.jpg"
                     alt="אלכס ריסין"
                     className="w-[60px] h-[60px] rounded-full object-cover"
+                    sizes="60px"
                   />
                   <span className="text-white font-semibold text-[15px] opacity-95">אלכס ריסין</span>
                 </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MotionProvider from "@/components/MotionProvider";
 import { personSchema, professionalServiceSchema, jsonLdScript } from "@/lib/schema";
 
 const heebo = Heebo({
@@ -64,11 +65,12 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl" className={heebo.variable}>
       <head>
-        {/* Preload hero image used above the fold on the home page */}
+        {/* Preload hero image (WebP) used above the fold on the home page */}
         <link
           rel="preload"
           as="image"
-          href="/assets/squeeze.jpg"
+          href="/assets/squeeze.webp"
+          type="image/webp"
           fetchPriority="high"
         />
         {/* JSON-LD structured data */}
@@ -89,10 +91,12 @@ export default function RootLayout({
         >
           דלג לתוכן הראשי
         </a>
-        <Header />
-        <main id="main-content" tabIndex={-1}>{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <MotionProvider>
+          <Header />
+          <main id="main-content" tabIndex={-1}>{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

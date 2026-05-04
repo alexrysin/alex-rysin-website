@@ -9,7 +9,7 @@
 //   assets/474063516_10163099459583223_4876267628564463566_n.jpg → public/assets/photo3.jpg
 // Then reference them as /assets/photo1.jpg etc.
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import Link from "next/link";
 
 const fadeUp = {
@@ -41,14 +41,24 @@ export default function AboutPage() {
                 and update the src below to: /assets/photo1.jpg
               */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4] bg-gradient-to-br from-[#1C3879] to-[#4A6FA5]">
-                <img
-                  src="/assets/about.png"
-                  alt="אלכס ריסין - יועץ פיננסי"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet="/assets/about-400w.webp 400w, /assets/about-800w.webp 800w, /assets/about-1200w.webp 1200w"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                  />
+                  <img
+                    src="/assets/about.png"
+                    alt="אלכס ריסין - יועץ פיננסי"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                </picture>
               </div>
             </motion.div>
 

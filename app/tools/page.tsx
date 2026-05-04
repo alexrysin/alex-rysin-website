@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 
 // ============================================================================
 // Tools index - landing page listing all free financial planning tools.
