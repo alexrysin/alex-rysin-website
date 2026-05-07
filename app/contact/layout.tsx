@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "צור קשר | אלכס ריסין - תכנון פיננסי ועצמאות כלכלית",
   description:
     "קבעו שיחת היכרות חינם עם אלכס ריסין. ללא התחייבות - שיחה שיכולה לשנות הרבה.",
+  alternates: { canonical: "/contact/" },
 };
 
 export default function ContactLayout({

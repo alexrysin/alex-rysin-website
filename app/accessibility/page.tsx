@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "הצהרת נגישות | אלכס ריסין",
   description: "הצהרת נגישות אתר אלכס ריסין - תכנון פיננסי ועצמאות כלכלית",
+  alternates: { canonical: "/accessibility/" },
 };
 
 export default function AccessibilityPage() {

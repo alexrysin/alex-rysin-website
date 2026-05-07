@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "המלצות לקוחות | אלכס ריסין - תכנון פיננסי",
   description:
     "לקוחות מספרים על התהליך - מה השתנה, איך הגיעו לבהירות, ואיך זה עזר להם לקבל החלטות כלכליות טובות יותר.",
+  alternates: { canonical: "/testimonials/" },
 };
 
 export default function TestimonialsLayout({

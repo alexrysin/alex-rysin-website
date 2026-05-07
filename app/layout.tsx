@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "אלכס ריסין | תכנון פיננסי ועצמאות כלכלית",
   description:
     "תכנון פיננסי אישי שמוביל לעצמאות כלכלית. אלכס ריסין מלווה אתכם מהבהירות ועד לביצוע בפועל.",
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,

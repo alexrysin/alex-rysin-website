@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "בלוג | אלכס ריסין - תכנון פיננסי ועצמאות כלכלית",
   description:
     "מאמרים מעשיים על תכנון פיננסי, השקעות, נדל״ן ועצמאות כלכלית - בעברית פשוטה, בלי עגה מקצועית.",
+  alternates: { canonical: "/blog/" },
 };
 
 export default function BlogLayout({

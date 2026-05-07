@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "מחשבון ריבית דריבית | אלכס ריסין",
   description:
     "מחשבון ריבית דריבית חינמי - תכננו כמה הכסף שלכם יצמח לאורך השנים, או חשבו את התשואה השנתית שאתם צריכים כדי להגיע ליעד.",
+  alternates: { canonical: "/tools/compound/" },
 };
 
 export default function CompoundLayout({

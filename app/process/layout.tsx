@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "איך זה עובד | אלכס ריסין - תכנון פיננסי",
   description:
     "תהליך תכנון פיננסי שמייצר בהירות וכיוון ברור - משלב ההבנה, דרך בניית אסטרטגיה, ועד ליציאה לדרך עם ודאות וכלים.",
+  alternates: { canonical: "/process/" },
   openGraph: {
     title: "איך זה עובד | אלכס ריסין",
     description:

@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "אודות | אלכס ריסין - תכנון פיננסי ועצמאות כלכלית",
   description:
     "הכירו את אלכס ריסין - יועץ פיננסי בלתי תלוי המתמחה בתכנון פיננסי אישי ובניית עצמאות כלכלית.",
+  alternates: { canonical: "/about/" },
 };
 
 export default function AboutLayout({

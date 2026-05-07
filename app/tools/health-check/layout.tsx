@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "מבחן בריאות כלכלית | אלכס ריסין",
   description:
     "15 שאלות קצרות על הבסיס הכלכלי שלכם - קרן חירום, חובות, חיסכון, תכנון ופיקוח. תוצאה מיידית עם ציון לכל קטגוריה והמלצות אישיות.",
+  alternates: { canonical: "/tools/health-check/" },
 };
 
 export default function HealthCheckLayout({
