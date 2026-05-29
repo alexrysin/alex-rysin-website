@@ -135,6 +135,27 @@ export default function HomePage() {
             />
           </motion.div>
 
+          {/* Trust strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="grid grid-cols-3 gap-2 mb-8 max-w-md w-full lg:max-w-[420px]"
+          >
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-amber-300">200+</div>
+              <div className="text-xs md:text-sm text-blue-100/80 mt-1">משפחות</div>
+            </div>
+            <div className="text-center border-x border-white/15">
+              <div className="text-2xl md:text-3xl font-bold text-amber-300">8+</div>
+              <div className="text-xs md:text-sm text-blue-100/80 mt-1">שנות ניסיון</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-amber-300">0</div>
+              <div className="text-xs md:text-sm text-blue-100/80 mt-1">מוצרים שאני מוכר</div>
+            </div>
+          </motion.div>
+
           {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
