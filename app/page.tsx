@@ -3,6 +3,7 @@
 import { m as motion } from "framer-motion";
 import Link from "next/link";
 import Picture from "@/components/Picture";
+import Section2Diagram from "@/components/Section2Diagram";
 
 // ---- Animation variants ----
 const fadeUp = {
@@ -200,74 +201,84 @@ export default function HomePage() {
           SECTION 2: RECOGNITION
       ================================================ */}
       <section className="bg-white py-20 md:py-24">
-        <div className="max-w-[950px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid md:grid-cols-5 gap-10 lg:gap-12 items-center">
 
-          {/* Heading */}
-          <motion.h2
-            {...fadeUp}
-            className="text-[2rem] md:text-[2.4rem] text-[#1C3879] leading-[1.25] mb-6"
-          >
-            <span className="font-normal">זה לא שאין לכם כסף.</span>
-            <br />
-            <span className="font-bold">זה שאין לו תפקיד ברור.</span>
-          </motion.h2>
+            {/* Diagram column (left in desktop RTL) */}
+            <div className="order-2 md:col-span-2">
+              <Section2Diagram />
+            </div>
 
-          {/* Subheadline */}
-          <motion.p
-            {...fadeUp}
-            className="text-base md:text-lg text-[#6B7280] leading-relaxed mb-8 max-w-[650px]"
-          >
-            וכשזה המצב - קל להרגיש שאתם עושים את הדבר הנכון, בלי לדעת אם זה באמת מקדם אתכם.
-          </motion.p>
+            {/* Text column (right in desktop RTL) */}
+            <div className="order-1 md:col-span-3">
+              {/* Heading */}
+              <motion.h2
+                {...fadeUp}
+                className="text-[2rem] md:text-[2.4rem] text-[#1C3879] leading-[1.25] mb-6"
+              >
+                <span className="font-normal">זה לא שאין לכם כסף.</span>
+                <br />
+                <span className="font-bold">זה שאין לו תפקיד ברור.</span>
+              </motion.h2>
 
-          {/* Bullet list */}
-          <div className="flex flex-col gap-[16px]">
-            {[
-              "אתם עושים מהלכים - אבל לא בטוחים אם זו הדרך הנכונה",
-              "משלבים בין השקעות, נדל״ן וחסכונות - בלי תמונה אחת שמחברת הכול",
-              "מרגישים שיש פוטנציאל ליותר - אבל אין דרך ברורה להגיע לשם",
-              "מקבלים החלטות חשובות - בלי להבין איך הן משפיעות על התמונה הגדולה",
-            ].map((item, i) => (
+              {/* Subheadline */}
               <motion.p
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="text-gray-800 text-base md:text-[1.1rem] leading-[1.7]"
+                {...fadeUp}
+                className="text-base md:text-lg text-[#6B7280] leading-relaxed mb-8"
               >
-                <span className="text-[#1C3879] ml-2">-</span>
-                {item}
+                וכשזה המצב - קל להרגיש שאתם עושים את הדבר הנכון, בלי לדעת אם זה באמת מקדם אתכם.
               </motion.p>
-            ))}
+
+              {/* Bullet list */}
+              <div className="flex flex-col gap-[16px]">
+                {[
+                  "אתם עושים מהלכים - אבל לא בטוחים אם זו הדרך הנכונה",
+                  "משלבים בין השקעות, נדל״ן וחסכונות - בלי תמונה אחת שמחברת הכול",
+                  "מרגישים שיש פוטנציאל ליותר - אבל אין דרך ברורה להגיע לשם",
+                  "מקבלים החלטות חשובות - בלי להבין איך הן משפיעות על התמונה הגדולה",
+                ].map((item, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    className="text-gray-800 text-base md:text-[1.1rem] leading-[1.7]"
+                  >
+                    <span className="text-[#1C3879] ml-2">-</span>
+                    {item}
+                  </motion.p>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <motion.div {...fadeUp} className="text-center mt-12">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-[#1C3879] hover:bg-[#142b5c] text-white font-bold px-10 py-[18px] rounded-xl transition-colors duration-300 text-lg"
+                >
+                  בואו נעשה סדר - ונראה איך זה נראה אצלכם
+                </Link>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-sm text-[#6B7280] mt-5"
+                >
+                  או -{" "}
+                  <Link
+                    href="/tools/potential"
+                    className="text-[#1C3879] font-semibold underline underline-offset-4 decoration-[#5AC8C8] decoration-2 hover:decoration-[#1C3879] transition-colors"
+                  >
+                    גלו קודם את המספר שלכם
+                  </Link>{" "}
+                  במחשבון חינמי, תוך 5 דקות
+                </motion.p>
+              </motion.div>
+            </div>
+
           </div>
-
-          {/* CTA */}
-          <motion.div {...fadeUp} className="text-center mt-12">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[#1C3879] hover:bg-[#142b5c] text-white font-bold px-10 py-[18px] rounded-xl transition-colors duration-300 text-lg"
-            >
-              בואו נעשה סדר - ונראה איך זה נראה אצלכם
-            </Link>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-sm text-[#6B7280] mt-5"
-            >
-              או -{" "}
-              <Link
-                href="/tools/potential"
-                className="text-[#1C3879] font-semibold underline underline-offset-4 decoration-[#5AC8C8] decoration-2 hover:decoration-[#1C3879] transition-colors"
-              >
-                גלו קודם את המספר שלכם
-              </Link>{" "}
-              במחשבון חינמי, תוך 5 דקות
-            </motion.p>
-          </motion.div>
-
         </div>
       </section>
 
