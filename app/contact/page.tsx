@@ -322,7 +322,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-bold text-lg mb-3">ללא התחייבות</h3>
                 <p className="text-blue-200 text-sm leading-relaxed">
-                  שיחה קצרה שעשויה לשנות הרבה. לא מוכרים, לא לוחצים - רק שיחה אמיתית.
+                  שיחה קצרה שעשויה לשנות הרבה. לא מוכרים, לא לוחצים - רק להבין איפה אתם נמצאים ואיך מתקדמים מכאן.
                 </p>
               </div>
             </div>
