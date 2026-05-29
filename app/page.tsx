@@ -87,6 +87,25 @@ function CheckIcon() {
   );
 }
 
+// ---- XIcon (pain point) ----
+function XIcon() {
+  return (
+    <svg
+      className="w-5 h-5 text-[#DC2626] flex-shrink-0 mt-1"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2.5}
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -237,17 +256,19 @@ export default function HomePage() {
                   "מרגישים שיש פוטנציאל ליותר - אבל אין דרך ברורה להגיע לשם",
                   "מקבלים החלטות חשובות - בלי להבין איך הן משפיעות על התמונה הגדולה",
                 ].map((item, i) => (
-                  <motion.p
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
-                    className="text-gray-800 text-base md:text-[1.1rem] leading-[1.7]"
+                    className="flex items-start gap-3"
                   >
-                    <span className="text-[#1C3879] ml-2">-</span>
-                    {item}
-                  </motion.p>
+                    <XIcon />
+                    <p className="text-gray-800 text-base md:text-[1.1rem] leading-[1.7]">
+                      {item}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
 
