@@ -27,6 +27,30 @@ export default function AboutPage() {
       {/* About Section */}
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Heading */}
+          <div className="text-center mb-12 md:mb-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5AC8C8]/10 border border-[#5AC8C8]/30 mb-5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5AC8C8]" />
+              <span className="text-xs font-bold text-[#1C3879] tracking-wider">
+                אודות
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl md:text-[2.6rem] font-bold text-[#1C3879] leading-tight"
+            >
+              הדרך שלי
+            </motion.h1>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Photo */}
             <motion.div
