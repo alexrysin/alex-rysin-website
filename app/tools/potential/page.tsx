@@ -782,7 +782,8 @@ function IncomeStep({
             placeholder="18,000"
           />
           <p className="text-xs text-gray-500 mt-2">
-            כולל הכל - משכנתא, מזון, חופשות, וכו&apos;
+            מזון, חשבונות, חופשות, ביטוחים וכו&apos; - <strong>בלי</strong> משכנתא
+            והלוואות, אותן נמלא בשלב הבא
           </p>
         </div>
       </div>
@@ -803,6 +804,30 @@ function IncomeStep({
 // Step 4 - Assets & liabilities
 // ---------------------------------------------------------------------------
 
+/**
+ * A checked property must have a value, and if it carries a mortgage it must
+ * also have a monthly payment and a *future* end date. Without an end date
+ * the engine assumes the mortgage ends this month and the debt silently
+ * disappears from the projection.
+ */
+function isPropertyComplete(
+  p: FormState["primary"],
+  checked: boolean
+): boolean {
+  if (!checked) return true;
+  if (Number(p.value) <= 0) return false;
+  if (Number(p.mortgageBalance) <= 0) return true;
+  const month = Number(p.endMonth);
+  const year = Number(p.endYear);
+  const now = new Date();
+  const endIsInFuture =
+    year > now.getFullYear() ||
+    (year === now.getFullYear() && month > now.getMonth() + 1);
+  return (
+    Number(p.monthlyPayment) > 0 && month >= 1 && month <= 12 && endIsInFuture
+  );
+}
+
 function AssetsStep({
   form,
   setForm,
@@ -814,6 +839,9 @@ function AssetsStep({
   onNext: () => void;
   onBack: () => void;
 }) {
+  const canContinue =
+    isPropertyComplete(form.primary, form.hasPrimaryResidence) &&
+    isPropertyComplete(form.investment, form.hasInvestmentProperty);
   function addLoan() {
     setForm({
       ...form,
@@ -963,9 +991,15 @@ function AssetsStep({
       </div>
 
       <div className="mt-10 space-y-4">
-        <PrimaryButton onClick={onNext}>
+        <PrimaryButton onClick={onNext} disabled={!canContinue}>
           {t(form.gender, "חשב", "חשבי")} את הפוטנציאל שלי
         </PrimaryButton>
+        {!canContinue && (
+          <p className="text-xs text-gray-500 text-center leading-relaxed">
+            כדי שהחישוב יהיה מדויק, לכל נכס מסומן צריך שווי - ואם יש עליו
+            משכנתא, גם החזר חודשי ותאריך סיום עתידי.
+          </p>
+        )}
         <div className="text-center">
           <BackButton onClick={onBack} />
         </div>
@@ -1193,6 +1227,12 @@ function ResultStep({
   const hasRange = range !== null;
   const firstName = form.name.trim();
 
+  // "Struggle mode": the projection ends at zero or below today's starting
+  // point - meaning the money is eroding. Framing it as achievable potential
+  // would be tone-deaf; instead we show an honest, warm redirect to a call.
+  const isStruggling =
+    result.netWorth <= 0 || result.netWorth < result.currentNetWorth;
+
   // ---- Growth chart geometry ----
   // A compact right-to-left SVG sparkline representing compound growth
   // from currentNetWorth (right) to netWorth (left), with an optional
@@ -1257,8 +1297,9 @@ function ResultStep({
           .join(" ")} Z`
       : null;
 
-  // Personalized tips based on the user's situation.
-  const tips = computeTips(form);
+  // Personalized tips based on the user's situation. In struggle mode the
+  // investment tips would be tone-deaf - the redirect card replaces them.
+  const tips = isStruggling ? [] : computeTips(form);
   // Tips animate in after the growth visualization; each one staggered.
   // CTA delay is pushed out so it lands after the last tip.
   const tipsBaseDelay = 2.0;
@@ -1287,7 +1328,9 @@ function ResultStep({
         transition={{ duration: 0.5, delay: 0.1 }}
         className="text-2xl md:text-[1.85rem] font-bold text-[#1A365D] leading-tight mb-2"
       >
-        בפעולה נכונה, בעוד {result.yearsAhead} שנים
+        {isStruggling
+          ? `בקצב הנוכחי, בעוד ${result.yearsAhead} שנים`
+          : `בפעולה נכונה, בעוד ${result.yearsAhead} שנים`}
       </motion.h2>
       <motion.p
         initial={{ opacity: 0, y: 10 }}
@@ -1295,7 +1338,9 @@ function ResultStep({
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-gray-500 mb-10"
       >
-        בגיל {result.futureAge} - זה מה שאפשר להגיע אליו
+        {isStruggling
+          ? `בגיל ${result.futureAge} - וזה בדיוק מה שאפשר לשנות`
+          : `בגיל ${result.futureAge} - זה מה שאפשר להגיע אליו`}
       </motion.p>
 
       {/* Net worth card */}
@@ -1554,6 +1599,34 @@ function ResultStep({
         </div>
       )}
 
+      {/* Struggle mode - honest, warm redirect instead of investment tips */}
+      {isStruggling && (
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: tipsBaseDelay }}
+          className="mb-10 text-right bg-[#1A365D]/[0.04] border border-[#1A365D]/10 rounded-2xl p-6"
+        >
+          <div className="flex items-start gap-3">
+            <div aria-hidden className="text-2xl leading-none mt-0.5 shrink-0">
+              🧭
+            </div>
+            <div className="flex-1">
+              <div className="text-sm font-bold text-[#1A365D] mb-1.5">
+                המספרים מספרים סיפור פשוט
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                כרגע ההוצאות וההחזרים החודשיים מדביקים את ההכנסה - כך שלא נבנה
+                עודף, ומה שנצבר נשחק עם הזמן. זו לא גזירת גורל: ברוב המקרים
+                כמה שינויים ממוקדים בתזרים הופכים את הכיוון של כל התמונה.
+                בדיוק בשביל זה קיים תהליך תכנון - וזה בדיוק הרגע הנכון לעשות
+                אותו.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* CTA block */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
@@ -1561,7 +1634,9 @@ function ResultStep({
         transition={{ duration: 0.5, delay: ctaDelay }}
       >
         <p className="text-gray-700 text-lg mb-6 font-medium">
-          רוצה להבין איך להגיע לשם?
+          {isStruggling
+            ? "רוצה לשנות את הכיוון? זה מתחיל בשיחה אחת."
+            : "רוצה להבין איך להגיע לשם?"}
         </p>
 
         <div className="space-y-3">
